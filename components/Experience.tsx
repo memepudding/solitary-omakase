@@ -7,6 +7,7 @@ import {dishName,dishDescription,EN_MENU} from '@/lib/locale';
 import {useLanguage} from './Language';
 import {downloadReceipt} from '@/lib/receipt';
 import Receipt from './Receipt';
+import BackgroundMusic from './BackgroundMusic';
 import {SEATING_MS,THINKING_MS,SERVING_MS,type ChefMode} from '@/lib/staging';
 import {nextBite,CLEARING_MS} from '@/lib/tasting';
 const Restaurant=dynamic(()=>import('./Restaurant'),{ssr:false});
@@ -28,8 +29,8 @@ export default function Experience(){
  const [menuChoice,setMenuChoice]=useState('auto'),[activeMenu,setActiveMenu]=useState(MENUS[0].id),[guestNear,setGuestNear]=useState(false),[dialogue,setDialogue]=useState(-1);
  const [seatTarget,setSeatTarget]=useState(false);
  const [foodReady,setFoodReady]=useState(false);const onDishReady=useCallback(()=>setFoodReady(true),[]);
- const screen=useRef<HTMLElement>(null);const onDishPosition=useCallback((x:number,y:number)=>{screen.current?.style.setProperty('--dish-x',`${x}px`);screen.current?.style.setProperty('--dish-y',`${y}px`);},[]);
- const audio=useRef<AudioContext|null>(null),heading=useRef<HTMLHeadingElement>(null),reference=useRef<HTMLDialogElement>(null),previousMenu=useRef<string|undefined>(undefined),lastBite=useRef(0);
+ const screen=useRef<HTMLElement>(null);const onDishPosition=useCallback((x:number,y:number,top:number)=>{screen.current?.style.setProperty('--dish-x',`${x}px`);screen.current?.style.setProperty('--dish-y',`${y}px`);screen.current?.style.setProperty('--dish-top',`${top}px`);},[]);
+ const audio=useRef<AudioContext|null>(null),heading=useRef<HTMLHeadingElement>(null),previousMenu=useRef<string|undefined>(undefined),lastBite=useRef(0);
  const courses=useMemo(()=>menuCourses(activeMenu),[activeMenu]),selectedIndex=MENUS.findIndex(m=>m.id===activeMenu),current=courses[course];
  const menuName=locale==='en'?EN_MENU[selectedIndex]:MENUS[selectedIndex].name;
  const entered=stage!=='outside',seated=!['outside','walking'].includes(stage),tasting=stage==='course'||stage==='clearing';
@@ -56,6 +57,7 @@ export default function Experience(){
  function approach(){setInspect(false);setGuestNear(true);setDialogue(-1);}
  async function save(){setSaving(true);try{await downloadReceipt(courses,message,true,issuedAt,locale);setNotice(t('오늘의 영수증을 저장했어요.','Your receipt has been saved.'));}catch{setNotice(t('저장하지 못했어요. 다시 시도해 주세요.','Could not save. Please try again.'));}finally{setSaving(false);}}
  return <main ref={screen} className={`experience ${entered?'is-inside':''} ${inspect?'is-exploring':''} ${seated?'is-seated':''} ${tasting?'is-tasting':''}`}>
+  <BackgroundMusic enabled={sound}/>
   <div className="scene" role="img" aria-label={t('티푸와 작은 손님이 있는 3D 오마카세 식당','A 3D omakase restaurant with Teepu and a shy guest')}>
    {webgl!==true&&<div className="reference-fallback"/>}
    {webgl===true&&<SceneBoundary onFailure={()=>setWebgl(false)}><Restaurant entered={seated} walking={stage==='walking'} seatTarget={seatTarget} onSeatSelect={()=>setSeatTarget(true)} onSeatNear={()=>{setSeatTarget(false);setStage('seating');}} inspect={inspect} chefMode={chefMode} dish={tasting?current.kind:undefined} tea={stage==='tea'} reducedMotion={reducedMotion} bites={bites} clearing={stage==='clearing'} chefSpeech={chefSpeech} guestNear={guestNear} guestSpeech={dialogue>=0?GUEST_LINES[dialogue][locale==='ko'?0:1]:''} onGuestNear={setGuestNear} onApproach={approach} onDishReady={onDishReady} onDishPosition={onDishPosition}/></SceneBoundary>}
@@ -78,8 +80,7 @@ export default function Experience(){
   </div>}
   {inspect&&!guestNear&&<div className="explore-caption"><span>{t('잠시, 둘러보세요.','Take a little look around.')}</span><p>{t('드래그해서 시선을 옮길 수 있어요.','Drag to look around.')}</p><button className="outline-button" onClick={approach}>{t('작은 손님 곁으로','Visit the little guest')} ↗</button><button className="outline-button" onClick={()=>setInspect(false)}>{t('내 자리로 돌아가기','Back to my seat')} <Arrow/></button></div>}
   {guestNear&&<section className="guest-dialogue" aria-label={t('작은 손님과 대화','Talk with the little guest')}><h2>{dialogue<0?t('말을 거시겠습니까?','Would you like to say hello?'):t('소소 · 부끄럼 많은 단골','Soso · a shy regular')}</h2>{dialogue<0?<><button onClick={()=>setDialogue(0)}>{t('말 걸기','Say hello')}</button><button onClick={()=>{setGuestNear(false);setInspect(false);}}>{t('그냥 지나가기','Just pass by')}</button></>:<><p className="sr-only" aria-live="polite">{GUEST_LINES[dialogue][locale==='ko'?0:1]}</p>{dialogue<4?<button onClick={()=>setDialogue(d=>d+1)}>{t('조금 더 이야기하기','Keep chatting')} ({dialogue+1}/5)</button>:<button onClick={()=>{setGuestNear(false);setDialogue(-1);}}>{t('다음에 또 만나요','See you next time')}</button>}<button onClick={()=>{setGuestNear(false);setDialogue(-1);}}>{t('조용히 인사하고 돌아가기','Wave goodbye quietly')}</button></>}</section>}
-  <footer className="site-footer"><div><span className="footer-number">01 —</span>{t('작은 식당의 첫 번째 밤','A little restaurant, one quiet night')}</div><div className="footer-actions">{entered&&!inspect&&!guestNear&&<button onClick={reset}>{t('식사 마치기','Leave the restaurant')}</button>}{!tasting&&!guestNear&&!inspect&&<button onClick={()=>setInspect(true)}>{t('식당 둘러보기','Look around')} ↗</button>}<a href="/menu-guide" target="_blank" rel="noreferrer">{t('코스 전체 보기','All courses')}</a><button onClick={()=>reference.current?.showModal()}>{t('공간 시안 보기','Design reference')}</button></div></footer>
+  <footer className="site-footer"><div><span className="footer-number">01 —</span>{t('작은 식당의 첫 번째 밤','A little restaurant, one quiet night')}</div><div className="footer-actions">{entered&&!inspect&&!guestNear&&<button onClick={reset}>{t('식사 마치기','Leave the restaurant')}</button>}{!tasting&&!guestNear&&!inspect&&<button onClick={()=>setInspect(true)}>{t('식당 둘러보기','Look around')} ↗</button>}</div></footer>
   {webgl===false&&<p className="webgl-notice">{t('이 브라우저에서는 참고 이미지로 보여드려요.','Your browser is showing the reference image.')}</p>}<div className={`toast ${notice?'visible':''}`} role="status">{notice}</div>
-  <dialog ref={reference} className="reference-dialog" onClick={e=>{if(e.target===e.currentTarget)reference.current?.close();}}><button className="dialog-close" aria-label={t('공간 시안 닫기','Close reference')} onClick={()=>reference.current?.close()}>×</button><img src="/references/interior.png" alt={t('식당의 디자인 참고 이미지','Restaurant design reference')}/><div><strong>{t('우리가 그린 작은 식당','The little restaurant we imagined')}</strong></div></dialog>
  </main>;
 }

@@ -15,7 +15,7 @@ import SausageGuest from './SausageGuest';
 import {DISH_ROTATION_SECONDS} from '@/lib/tasting';
 
 type Vec = [number, number, number];
-type SceneProps = { onDishPosition:(x:number,y:number)=>void; walking:boolean; seatTarget:boolean; onSeatSelect:()=>void; onSeatNear:()=>void; chefMode:ChefMode; entered: boolean; inspect: boolean; dish?: DishKind; tea: boolean; reducedMotion: boolean; bites:number; clearing:boolean; chefSpeech:string; guestNear:boolean; guestSpeech:string; onGuestNear:(near:boolean)=>void; onApproach:()=>void; onDishReady:()=>void };
+type SceneProps = { onDishPosition:(x:number,y:number,top:number)=>void; walking:boolean; seatTarget:boolean; onSeatSelect:()=>void; onSeatNear:()=>void; chefMode:ChefMode; entered: boolean; inspect: boolean; dish?: DishKind; tea: boolean; reducedMotion: boolean; bites:number; clearing:boolean; chefSpeech:string; guestNear:boolean; guestSpeech:string; onGuestNear:(near:boolean)=>void; onApproach:()=>void; onDishReady:()=>void };
 
 // Keep the guest-facing counter fixed; expand the chef's working aisle behind it.
 const KITCHEN = {
@@ -160,8 +160,10 @@ function Food({ kind }: {kind:DishKind}) {
   </group>;
 }
 
-function ServedDish({kind, reducedMotion,bites,clearing,onReady,onPosition}:{onPosition:(x:number,y:number)=>void;kind:DishKind;reducedMotion:boolean;bites:number;clearing:boolean;onReady:()=>void}) {
+function ServedDish({kind, reducedMotion,bites,clearing,onReady,onPosition}:{onPosition:(x:number,y:number,top:number)=>void;kind:DishKind;reducedMotion:boolean;bites:number;clearing:boolean;onReady:()=>void}) {
   const ref=useRef<THREE.Group>(null),elapsed=useRef(0),exitTime=useRef(0);
+  const labelPoints=useMemo(()=>[-.56,.56].flatMap(x=>[0,.8].flatMap(y=>[-.56,.56].map(z=>new THREE.Vector3(x,y,z)))),[]);
+  const projected=useMemo(()=>new THREE.Vector3(),[]);
   const {size,camera}=useThree();const portrait=size.width/size.height<.85;
   useFrame((_,delta)=>{
     if(!ref.current)return;
@@ -170,8 +172,14 @@ function ServedDish({kind, reducedMotion,bites,clearing,onReady,onPosition}:{onP
     ref.current.position.set(GUEST_SEAT.x,2.12+ease*.14+(reducedMotion?0:Math.sin(t*1.4)*.025),.7+ease*.55);
     if(clearing)exitTime.current+=Math.min(delta,.1);
     ref.current.rotation.y=reducedMotion?0:t*Math.PI*2/DISH_ROTATION_SECONDS+exitTime.current*14;
-    ref.current.rotation.x=.16;const point=ref.current.position.clone().project(camera);onPosition((point.x+1)*size.width/2,(1-point.y)*size.height/2);
+    ref.current.rotation.x=.16;
     ref.current.scale.setScalar((portrait?.45:.58)*(.8+.2*ease)*(clearing?Math.max(.01,1-exitTime.current/.85):1));
+    // Project the full normalized food envelope, including tall dishes and rotation.
+    ref.current.updateMatrixWorld(true);
+    let top=size.height;
+    for(const corner of labelPoints){projected.copy(corner).applyMatrix4(ref.current.matrixWorld).project(camera);top=Math.min(top,(1-projected.y)*size.height/2);}
+    projected.copy(ref.current.position).project(camera);
+    onPosition((projected.x+1)*size.width/2,(1-projected.y)*size.height/2,top);
   });
   return <group ref={ref} position={[GUEST_SEAT.x,2.16,.7]} scale={.5}>{isAssetDish(kind)?<AssetFood kind={kind} bites={bites} onReady={onReady}/>:<Food kind={kind}/>}</group>;
 }
