@@ -1,0 +1,801 @@
+{
+  "dishes": {
+    "01-chawanmushi": {
+      "name": "차완무시",
+      "description": "차완무시의 맛을 담아 정성껏 준비한 한 접시예요.",
+      "note": "작은 한 입부터, 오늘의 속도로.",
+      "form": "custard"
+    },
+    "02-aburi-salmon": {
+      "name": "아부리 연어 초밥",
+      "description": "아부리 연어 초밥의 맛을 담아 정성껏 준비한 한 접시예요.",
+      "note": "당신을 위해 준비한 한 접시예요.",
+      "form": "salmon"
+    },
+    "03-hojicha-pudding": {
+      "name": "호지차 푸딩",
+      "description": "호지차 푸딩의 맛을 담아 정성껏 준비한 한 접시예요.",
+      "note": "끝에는 작은 다정함을 남겨둘게요.",
+      "form": "pudding"
+    },
+    "04-mushroom-dashi": {
+      "name": "버섯 다시 수프",
+      "description": "버섯 다시 수프의 맛을 담아 정성껏 준비한 한 접시예요.",
+      "note": "작은 한 입부터, 오늘의 속도로.",
+      "form": "soup"
+    },
+    "05-unagi-rice": {
+      "name": "장어 솥밥",
+      "description": "장어 솥밥의 맛을 담아 정성껏 준비한 한 접시예요.",
+      "note": "당신을 위해 준비한 한 접시예요.",
+      "form": "unagi"
+    },
+    "06-sesame-mochi": {
+      "name": "흑임자 모찌",
+      "description": "흑임자 모찌의 맛을 담아 정성껏 준비한 한 접시예요.",
+      "note": "끝에는 작은 다정함을 남겨둘게요.",
+      "form": "mochi"
+    },
+    "07-yuzu-radish": {
+      "name": "유자 무절임",
+      "description": "유자 무절임의 맛을 담아 정성껏 준비한 한 접시예요.",
+      "note": "작은 한 입부터, 오늘의 속도로.",
+      "form": "radish"
+    },
+    "08-tempura-roll": {
+      "name": "새우 텐푸라 롤",
+      "description": "새우 텐푸라 롤의 맛을 담아 정성껏 준비한 한 접시예요.",
+      "note": "당신을 위해 준비한 한 접시예요.",
+      "form": "roll"
+    },
+    "09-lemon-sorbet": {
+      "name": "레몬 소르베",
+      "description": "레몬 소르베의 맛을 담아 정성껏 준비한 한 접시예요.",
+      "note": "끝에는 작은 다정함을 남겨둘게요.",
+      "form": "sorbet"
+    },
+    "10-pumpkin-custard": {
+      "name": "단호박 계란찜",
+      "description": "단호박 계란찜의 맛을 담아 정성껏 준비한 한 접시예요.",
+      "note": "작은 한 입부터, 오늘의 속도로.",
+      "form": "custard"
+    },
+    "11-salmon-ochazuke": {
+      "name": "연어 오차즈케",
+      "description": "연어 오차즈케의 맛을 담아 정성껏 준비한 한 접시예요.",
+      "note": "당신을 위해 준비한 한 접시예요.",
+      "form": "ochazuke"
+    },
+    "12-strawberry-daifuku": {
+      "name": "딸기 다이후쿠",
+      "description": "딸기 다이후쿠의 맛을 담아 정성껏 준비한 한 접시예요.",
+      "note": "끝에는 작은 다정함을 남겨둘게요.",
+      "form": "daifuku"
+    },
+    "13-eggplant": {
+      "name": "된장 가지구이",
+      "description": "부드럽게 구운 가지에 된장 소스를 발랐어요.",
+      "note": "작은 한 입부터, 오늘의 속도로.",
+      "form": "eggplant"
+    },
+    "14-crab-rice": {
+      "name": "게살 달걀 덮밥",
+      "description": "폭신한 달걀과 게살을 따뜻한 밥 위에 올렸어요.",
+      "note": "당신을 위해 준비한 한 접시예요.",
+      "form": "crab-rice"
+    },
+    "15-chestnut-pudding": {
+      "name": "밤 푸딩",
+      "description": "고소한 밤을 올린 부드러운 푸딩이에요.",
+      "note": "끝에는 작은 다정함을 남겨둘게요.",
+      "form": "chestnut-pudding"
+    },
+    "16-cucumber": {
+      "name": "오이 초절임",
+      "description": "아삭한 오이를 새콤하게 절였어요.",
+      "note": "작은 한 입부터, 오늘의 속도로.",
+      "form": "cucumber"
+    },
+    "17-white-sushi": {
+      "name": "도미 소금 초밥",
+      "description": "담백한 도미에 소금을 살짝 더한 초밥이에요.",
+      "note": "당신을 위해 준비한 한 접시예요.",
+      "form": "white-sushi"
+    },
+    "18-pear-jelly": {
+      "name": "배 젤리",
+      "description": "맑고 산뜻한 배의 단맛을 담은 젤리예요.",
+      "note": "끝에는 작은 다정함을 남겨둘게요.",
+      "form": "pear-jelly"
+    },
+    "19-tofu-mushroom": {
+      "name": "두부 앙카케",
+      "description": "연두부에 따뜻한 버섯 소스를 끼얹었어요.",
+      "note": "작은 한 입부터, 오늘의 속도로.",
+      "form": "tofu-mushroom"
+    },
+    "20-mushroom-rice": {
+      "name": "버섯 솥밥",
+      "description": "버섯 향이 밴 따뜻한 솥밥이에요.",
+      "note": "당신을 위해 준비한 한 접시예요.",
+      "form": "mushroom-rice"
+    },
+    "21-vanilla-mochi": {
+      "name": "바닐라 모찌",
+      "description": "말랑한 찹쌀떡에 바닐라 향을 담았어요.",
+      "note": "끝에는 작은 다정함을 남겨둘게요.",
+      "form": "vanilla-mochi"
+    },
+    "22-tomato": {
+      "name": "토마토 다시 절임",
+      "description": "껍질을 벗긴 토마토를 맑은 다시에 절였어요.",
+      "note": "작은 한 입부터, 오늘의 속도로.",
+      "form": "tomato"
+    },
+    "23-white-trio": {
+      "name": "흰살생선 초밥 3종",
+      "description": "서로 다른 흰살생선을 올린 초밥 세 점이에요.",
+      "note": "당신을 위해 준비한 한 접시예요.",
+      "form": "white-trio"
+    },
+    "24-yuzu-sorbet": {
+      "name": "유자 셔벗",
+      "description": "유자 향이 은은한 시원한 셔벗이에요.",
+      "note": "끝에는 작은 다정함을 남겨둘게요.",
+      "form": "yuzu-sorbet"
+    },
+    "25-tofu-roe": {
+      "name": "냉두부 폰즈",
+      "description": "차가운 두부에 폰즈와 연어알을 더했어요.",
+      "note": "작은 한 입부터, 오늘의 속도로.",
+      "form": "tofu-roe"
+    },
+    "26-tuna-roll": {
+      "name": "매콤 아부리 참치롤",
+      "description": "참치를 살짝 구워 매콤한 소스를 올린 롤이에요.",
+      "note": "당신을 위해 준비한 한 접시예요.",
+      "form": "tuna-roll"
+    },
+    "27-citrus-sorbet": {
+      "name": "시트러스 소르베",
+      "description": "감귤의 상큼함을 담은 소르베예요.",
+      "note": "끝에는 작은 다정함을 남겨둘게요.",
+      "form": "citrus-sorbet"
+    },
+    "28-shrimp-custard": {
+      "name": "새우 계란찜",
+      "description": "새우를 얹은 부드러운 달걀찜이에요.",
+      "note": "작은 한 입부터, 오늘의 속도로.",
+      "form": "shrimp-custard"
+    },
+    "29-scallop-rice": {
+      "name": "간장 버터 관자 솥밥",
+      "description": "구운 관자와 버터, 간장 향을 담은 솥밥이에요.",
+      "note": "당신을 위해 준비한 한 접시예요.",
+      "form": "scallop-rice"
+    },
+    "30-caramel-pudding": {
+      "name": "캐러멜 푸딩",
+      "description": "캐러멜 소스를 얹은 달콤한 푸딩이에요.",
+      "note": "끝에는 작은 다정함을 남겨둘게요.",
+      "form": "caramel-pudding"
+    },
+    "31-spinach": {
+      "name": "시금치 참깨무침",
+      "description": "시금치에 고소한 참깨 양념을 더했어요.",
+      "note": "작은 한 입부터, 오늘의 속도로.",
+      "form": "spinach"
+    },
+    "32-salmon-egg": {
+      "name": "연어·계란 초밥",
+      "description": "연어와 계란말이 초밥을 한 상에 담았어요.",
+      "note": "당신을 위해 준비한 한 접시예요.",
+      "form": "salmon-egg"
+    },
+    "33-sweet-potato": {
+      "name": "고구마 양갱",
+      "description": "고구마의 은은한 단맛을 담은 양갱이에요.",
+      "note": "끝에는 작은 다정함을 남겨둘게요.",
+      "form": "sweet-potato"
+    },
+    "34-lotus": {
+      "name": "바삭한 연근칩",
+      "description": "얇게 썬 연근을 바삭하게 튀겼어요.",
+      "note": "작은 한 입부터, 오늘의 속도로.",
+      "form": "lotus"
+    },
+    "35-shrimp-roll": {
+      "name": "크런치 새우롤",
+      "description": "바삭한 튀김옷을 두른 새우 롤이에요.",
+      "note": "당신을 위해 준비한 한 접시예요.",
+      "form": "shrimp-roll"
+    },
+    "36-parfait": {
+      "name": "딸기 파르페",
+      "description": "딸기와 크림, 바삭한 크럼블을 층층이 담았어요.",
+      "note": "끝에는 작은 다정함을 남겨둘게요.",
+      "form": "parfait"
+    },
+    "37-omelette": {
+      "name": "다시 계란말이",
+      "description": "다시를 넣어 촉촉하게 말아낸 계란말이예요.",
+      "note": "작은 한 입부터, 오늘의 속도로.",
+      "form": "omelette"
+    },
+    "38-tuna-sushi": {
+      "name": "참치 아카미 초밥",
+      "description": "붉은 참치 아카미를 올린 초밥 두 점이에요.",
+      "note": "당신을 위해 준비한 한 접시예요.",
+      "form": "tuna-sushi"
+    },
+    "39-matcha-jelly": {
+      "name": "말차 젤리",
+      "description": "말차의 은은한 쌉쌀함을 담은 젤리예요.",
+      "note": "끝에는 작은 다정함을 남겨둘게요.",
+      "form": "matcha-jelly"
+    },
+    "40-sesame-tofu": {
+      "name": "연두부 참깨소스",
+      "description": "말랑한 연두부에 고소한 참깨 소스를 더했어요.",
+      "note": "작은 한 입부터, 오늘의 속도로.",
+      "form": "sesame-tofu"
+    },
+    "41-flounder": {
+      "name": "광어 초밥",
+      "description": "담백하고 부드러운 광어 초밥이에요.",
+      "note": "당신을 위해 준비한 한 접시예요.",
+      "form": "flounder"
+    },
+    "42-soy-pudding": {
+      "name": "두유 푸딩",
+      "description": "두유의 고소한 맛을 살린 부드러운 푸딩이에요.",
+      "note": "끝에는 작은 다정함을 남겨둘게요.",
+      "form": "soy-pudding"
+    },
+    "43-greens": {
+      "name": "제철 채소 오히타시",
+      "description": "제철 푸른 채소를 다시에 가볍게 무쳤어요.",
+      "note": "작은 한 입부터, 오늘의 속도로.",
+      "form": "greens"
+    },
+    "44-soba": {
+      "name": "새우튀김 메밀소바",
+      "description": "메밀면 위에 바삭한 새우튀김을 올렸어요.",
+      "note": "당신을 위해 준비한 한 접시예요.",
+      "form": "soba"
+    },
+    "45-monaka": {
+      "name": "팥 모나카",
+      "description": "바삭한 과자 사이에 달콤한 팥을 채웠어요.",
+      "note": "끝에는 작은 다정함을 남겨둘게요.",
+      "form": "monaka"
+    },
+    "46-tartare": {
+      "name": "연어 타르타르",
+      "description": "잘게 썬 연어에 연어알과 채소를 더했어요.",
+      "note": "작은 한 입부터, 오늘의 속도로.",
+      "form": "tartare"
+    },
+    "47-shrimp-sushi": {
+      "name": "붉은새우 초밥",
+      "description": "붉은새우의 단맛을 담은 초밥이에요.",
+      "note": "당신을 위해 준비한 한 접시예요.",
+      "form": "shrimp-sushi"
+    },
+    "48-peach-jelly": {
+      "name": "복숭아 젤리",
+      "description": "복숭아 조각을 담은 투명한 젤리예요.",
+      "note": "끝에는 작은 다정함을 남겨둘게요.",
+      "form": "peach-jelly"
+    },
+    "49-carpaccio": {
+      "name": "단새우 카르파초",
+      "description": "단새우를 꽃처럼 펼치고 연어알을 얹었어요.",
+      "note": "작은 한 입부터, 오늘의 속도로.",
+      "form": "carpaccio"
+    },
+    "50-sushi-trio": {
+      "name": "3종 모둠 초밥",
+      "description": "연어, 흰살생선, 참치를 한 상에 담았어요.",
+      "note": "당신을 위해 준비한 한 접시예요.",
+      "form": "sushi-trio"
+    },
+    "51-cream-mochi": {
+      "name": "딸기 크림 모찌",
+      "description": "딸기와 부드러운 크림을 찹쌀떡으로 감쌌어요.",
+      "note": "끝에는 작은 다정함을 남겨둘게요.",
+      "form": "cream-mochi"
+    },
+    "52-scallop-custard": {
+      "name": "관자 차완무시",
+      "description": "도톰한 관자를 얹은 차완무시예요.",
+      "note": "작은 한 입부터, 오늘의 속도로.",
+      "form": "scallop-custard"
+    },
+    "53-toro": {
+      "name": "오도로 초밥",
+      "description": "풍부한 맛의 참치 뱃살 초밥이에요.",
+      "note": "당신을 위해 준비한 한 접시예요.",
+      "form": "toro"
+    },
+    "54-montblanc": {
+      "name": "밤 몽블랑",
+      "description": "밤 크림을 층층이 두른 몽블랑이에요.",
+      "note": "끝에는 작은 다정함을 남겨둘게요.",
+      "form": "montblanc"
+    },
+    "55-peas": {
+      "name": "와사비 완두콩 무침",
+      "description": "완두콩에 와사비와 참깨를 가볍게 버무렸어요.",
+      "note": "작은 한 입부터, 오늘의 속도로.",
+      "form": "peas"
+    },
+    "56-wagyu": {
+      "name": "와규 아부리 초밥",
+      "description": "살짝 구운 와규를 밥 위에 올렸어요.",
+      "note": "당신을 위해 준비한 한 접시예요.",
+      "form": "wagyu"
+    },
+    "57-mango-mochi": {
+      "name": "망고 다이후쿠",
+      "description": "노란 망고를 말랑한 떡으로 감쌌어요.",
+      "note": "끝에는 작은 다정함을 남겨둘게요.",
+      "form": "mango-mochi"
+    },
+    "58-uni-custard": {
+      "name": "성게알 차완무시",
+      "description": "성게알을 얹은 부드러운 차완무시예요.",
+      "note": "작은 한 입부터, 오늘의 속도로.",
+      "form": "uni-custard"
+    },
+    "59-premium-sushi": {
+      "name": "제철 프리미엄 초밥 3종",
+      "description": "제철 생선과 새우를 담은 특별한 초밥 세 점이에요.",
+      "note": "당신을 위해 준비한 한 접시예요.",
+      "form": "premium-sushi"
+    },
+    "60-fruit-mochi": {
+      "name": "계절 과일 모찌",
+      "description": "여러 가지 제철 과일을 담은 찹쌀떡이에요.",
+      "note": "끝에는 작은 다정함을 남겨둘게요.",
+      "form": "fruit-mochi"
+    },
+    "61-sleepy-bread": {
+      "name": "졸린 강아지 우유빵",
+      "description": "우유를 넣어 부드럽게 구운 강아지 모양 빵이에요.",
+      "note": "작은 한 입부터, 오늘의 속도로.",
+      "form": "sleepy-bread"
+    },
+    "62-cheese-gratin": {
+      "name": "노릇한 치즈 그라탱",
+      "description": "노릇한 치즈를 덮은 그라탱에 산뜻한 샐러드를 곁들였어요.",
+      "note": "당신을 위해 준비한 한 접시예요.",
+      "form": "cheese-gratin"
+    },
+    "63-puppy-pancakes": {
+      "name": "티푸 크림 팬케이크",
+      "description": "폭신한 팬케이크 사이에 크림을 채우고 작은 티푸를 올렸어요.",
+      "note": "끝에는 작은 다정함을 남겨둘게요.",
+      "form": "puppy-pancakes"
+    }
+  },
+  "menus": [
+    {
+      "id": "quiet",
+      "name": "수고했어 코스",
+      "keywords": [
+        "수고",
+        "애썼",
+        "고생",
+        "퇴근",
+        "열심히"
+      ],
+      "kinds": [
+        "01-chawanmushi",
+        "02-aburi-salmon",
+        "03-hojicha-pudding"
+      ]
+    },
+    {
+      "id": "restore",
+      "name": "충전 코스",
+      "keywords": [
+        "피곤",
+        "지쳤",
+        "지치",
+        "지쳐",
+        "졸리",
+        "졸려",
+        "졸음",
+        "자고 싶",
+        "잠이 와",
+        "잠이 온",
+        "잠이 오",
+        "기운이 없",
+        "녹초",
+        "야근",
+        "과로",
+        "에너지",
+        "충전"
+      ],
+      "kinds": [
+        "04-mushroom-dashi",
+        "05-unagi-rice",
+        "06-sesame-mochi"
+      ]
+    },
+    {
+      "id": "refresh",
+      "name": "기운 내 코스",
+      "keywords": [
+        "기운 내",
+        "응원",
+        "힘내",
+        "힘들",
+        "힘든",
+        "의욕",
+        "기운내"
+      ],
+      "kinds": [
+        "07-yuzu-radish",
+        "08-tempura-roll",
+        "09-lemon-sorbet"
+      ]
+    },
+    {
+      "id": "comfort",
+      "name": "작은 위로 코스",
+      "keywords": [
+        "우울",
+        "위로",
+        "외로",
+        "외롭",
+        "슬프",
+        "슬퍼",
+        "슬펐",
+        "눈물",
+        "울었",
+        "이별",
+        "헤어",
+        "lonely",
+        "sad"
+      ],
+      "kinds": [
+        "10-pumpkin-custard",
+        "11-salmon-ochazuke",
+        "12-strawberry-daifuku"
+      ]
+    },
+    {
+      "id": "cozy",
+      "name": "포근함 코스",
+      "keywords": [
+        "집에 가고 싶",
+        "집 가고 싶",
+        "집에가고싶",
+        "포근",
+        "추워",
+        "추운",
+        "춥",
+        "따뜻",
+        "보고 싶",
+        "그리워"
+      ],
+      "kinds": [
+        "13-eggplant",
+        "14-crab-rice",
+        "15-chestnut-pudding"
+      ]
+    },
+    {
+      "id": "okay",
+      "name": "괜찮아 코스",
+      "keywords": [
+        "괜찮",
+        "실수",
+        "걱정",
+        "불안",
+        "긴장",
+        "실패",
+        "망쳤",
+        "anxious"
+      ],
+      "kinds": [
+        "16-cucumber",
+        "17-white-sushi",
+        "18-pear-jelly"
+      ]
+    },
+    {
+      "id": "slow",
+      "name": "천천히 코스",
+      "keywords": [
+        "쉬고 싶",
+        "눕고 싶",
+        "천천히",
+        "쉬어",
+        "휴식",
+        "쉬고싶",
+        "바쁘",
+        "바빴",
+        "바쁜",
+        "고단",
+        "지친"
+      ],
+      "kinds": [
+        "19-tofu-mushroom",
+        "20-mushroom-rice",
+        "21-vanilla-mochi"
+      ]
+    },
+    {
+      "id": "clear",
+      "name": "마음 정리 코스",
+      "keywords": [
+        "정리",
+        "복잡",
+        "생각이 많",
+        "생각 많",
+        "혼란",
+        "잊고",
+        "정신없",
+        "답답"
+      ],
+      "kinds": [
+        "22-tomato",
+        "23-white-trio",
+        "24-yuzu-sorbet"
+      ]
+    },
+    {
+      "id": "anger",
+      "name": "화풀이 코스",
+      "keywords": [
+        "빡쳐",
+        "빡치",
+        "화남",
+        "화나",
+        "화가",
+        "화났",
+        "짜증",
+        "열받",
+        "분노",
+        "억울",
+        "스트레스",
+        "angry",
+        "stress"
+      ],
+      "kinds": [
+        "25-tofu-roe",
+        "26-tuna-roll",
+        "27-citrus-sorbet"
+      ]
+    },
+    {
+      "id": "soothe",
+      "name": "달래기 코스",
+      "keywords": [
+        "속상",
+        "서운",
+        "마음 아",
+        "마음이 아",
+        "상처",
+        "섭섭",
+        "달래"
+      ],
+      "kinds": [
+        "28-shrimp-custard",
+        "29-scallop-rice",
+        "30-caramel-pudding"
+      ]
+    },
+    {
+      "id": "restart",
+      "name": "다시 시작 코스",
+      "keywords": [
+        "다시 시작",
+        "새출발",
+        "새 출발",
+        "도전",
+        "재도전",
+        "다짐",
+        "시작"
+      ],
+      "kinds": [
+        "31-spinach",
+        "32-salmon-egg",
+        "33-sweet-potato"
+      ]
+    },
+    {
+      "id": "bored",
+      "name": "심심 탈출 코스",
+      "keywords": [
+        "심심",
+        "지루",
+        "따분",
+        "재미없",
+        "bored"
+      ],
+      "kinds": [
+        "34-lotus",
+        "35-shrimp-roll",
+        "36-parfait"
+      ]
+    },
+    {
+      "id": "focus",
+      "name": "몰입 코스",
+      "keywords": [
+        "집중",
+        "몰입",
+        "공부",
+        "시험",
+        "마감",
+        "일해야",
+        "작업"
+      ],
+      "kinds": [
+        "37-omelette",
+        "38-tuna-sushi",
+        "39-matcha-jelly"
+      ]
+    },
+    {
+      "id": "quiet-day",
+      "name": "고요한 코스",
+      "keywords": [
+        "조용",
+        "고요",
+        "평온",
+        "혼자",
+        "평범",
+        "무난",
+        "별일 없",
+        "별일없는"
+      ],
+      "kinds": [
+        "40-sesame-tofu",
+        "41-flounder",
+        "42-soy-pudding"
+      ]
+    },
+    {
+      "id": "leisure",
+      "name": "느긋한 코스",
+      "keywords": [
+        "느긋",
+        "여유",
+        "주말",
+        "휴가",
+        "한가",
+        "산책"
+      ],
+      "kinds": [
+        "43-greens",
+        "44-soba",
+        "45-monaka"
+      ]
+    },
+    {
+      "id": "flutter",
+      "name": "두근두근 코스",
+      "keywords": [
+        "설레",
+        "두근",
+        "데이트",
+        "첫 만남",
+        "좋아하는 사람",
+        "고백"
+      ],
+      "kinds": [
+        "46-tartare",
+        "47-shrimp-sushi",
+        "48-peach-jelly"
+      ]
+    },
+    {
+      "id": "happy",
+      "name": "행복 가득 코스",
+      "keywords": [
+        "ㅋㅋ",
+        "ㅎㅎ",
+        "하하",
+        "웃겨",
+        "웃음",
+        "행복",
+        "기뻐",
+        "기쁘",
+        "기쁜",
+        "즐거",
+        "즐겁",
+        "신나",
+        "신났",
+        "좋았",
+        "좋은",
+        "happy"
+      ],
+      "kinds": [
+        "49-carpaccio",
+        "50-sushi-trio",
+        "51-cream-mochi"
+      ]
+    },
+    {
+      "id": "celebrate",
+      "name": "셀프 축하 코스",
+      "keywords": [
+        "축하",
+        "합격",
+        "성공",
+        "생일",
+        "승진",
+        "해냈",
+        "뿌듯",
+        "기념",
+        "celebrat"
+      ],
+      "kinds": [
+        "52-scallop-custard",
+        "53-toro",
+        "54-montblanc"
+      ]
+    },
+    {
+      "id": "adventure",
+      "name": "모험 코스",
+      "keywords": [
+        "모험",
+        "새로운",
+        "색다른",
+        "여행",
+        "기분 전환",
+        "기분전환",
+        "용기"
+      ],
+      "kinds": [
+        "55-peas",
+        "56-wagyu",
+        "57-mango-mochi"
+      ]
+    },
+    {
+      "id": "special",
+      "name": "스페셜 코스",
+      "keywords": [
+        "특별",
+        "스페셜",
+        "최고",
+        "보상",
+        "선물",
+        "플렉스",
+        "호사"
+      ],
+      "kinds": [
+        "58-uni-custard",
+        "59-premium-sushi",
+        "60-fruit-mochi"
+      ]
+    },
+    {
+      "id": "bakery",
+      "name": "포근한 베이커리 코스",
+      "keywords": [
+        "빵",
+        "베이커리",
+        "팬케이크",
+        "그라탱",
+        "브런치",
+        "bread",
+        "pancake",
+        "gratin",
+        "bakery"
+      ],
+      "kinds": [
+        "61-sleepy-bread",
+        "62-cheese-gratin",
+        "63-puppy-pancakes"
+      ]
+    }
+  ]
+}
