@@ -3,6 +3,7 @@ import './globals.css';
 import {headers} from 'next/headers';
 import {detectLocale} from '@/lib/locale';
 import {LanguageProvider} from '@/components/Language';
+import { Analytics } from '@vercel/analytics/next';
 
 async function requestLocale() {
   const h = await headers();
@@ -20,5 +21,5 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const locale = await requestLocale();
-  return <html lang={locale}><body><LanguageProvider initial={locale}>{children}</LanguageProvider></body></html>;
+  return <html lang={locale}><body><LanguageProvider initial={locale}>{children}</LanguageProvider><Analytics /></body></html>;
 }
