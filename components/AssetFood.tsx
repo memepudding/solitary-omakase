@@ -13,7 +13,8 @@ function Model({kind,bites=0,onReady}:{kind:AssetDishKind;bites?:number;onReady?
   const span=Math.max(size.x,size.z),scale=Math.min(1.12/span,.8/size.y),uniform={value:0},materials:T.Material[]=[];
   const caps=makeBiteCaps(clone,kind,new T.Vector3(center.x,box.min.y,center.z),span,uniform);
   clone.traverse(object=>{if(!(object instanceof T.Mesh))return;
-   object.castShadow=true;object.receiveShadow=true;
+   // Bite clipping uses custom shaders; keep shadow state stable across bites.
+   object.castShadow=false;object.receiveShadow=true;
    const base=Array.isArray(object.material)?object.material:[object.material];
    const mapped=base.map(original=>{
     const mat=original.clone() as T.MeshStandardMaterial;materials.push(mat);
@@ -45,7 +46,6 @@ function Model({kind,bites=0,onReady}:{kind:AssetDishKind;bites?:number;onReady?
  },[scene,kind]);
  useEffect(()=>{onReady?.();},[model,onReady]);
  model.uniform.value=bites;
- useEffect(()=>{model.clone.traverse(o=>{if(o instanceof T.Mesh)o.castShadow=bites===0;});},[model,bites]);
  useEffect(()=>()=>{model.materials.forEach(m=>m.dispose());model.caps.traverse(o=>{if(o instanceof T.Mesh){o.geometry.dispose();(o.material as T.Material).dispose();}});},[model]);
  return <group position={model.offset}><primitive object={model.clone} scale={model.scale} dispose={null}/></group>;
 }

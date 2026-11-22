@@ -2,73 +2,73 @@
   "dishes": {
     "01-chawanmushi": {
       "name": "차완무시",
-      "description": "차완무시의 맛을 담아 정성껏 준비한 한 접시예요.",
+      "description": "다시를 넣은 달걀을 부드럽게 쪄낸 차완무시예요.",
       "note": "작은 한 입부터, 오늘의 속도로.",
       "form": "custard"
     },
     "02-aburi-salmon": {
       "name": "아부리 연어 초밥",
-      "description": "아부리 연어 초밥의 맛을 담아 정성껏 준비한 한 접시예요.",
+      "description": "연어 표면을 살짝 구워 고소한 향을 낸 초밥이에요.",
       "note": "당신을 위해 준비한 한 접시예요.",
       "form": "salmon"
     },
     "03-hojicha-pudding": {
       "name": "호지차 푸딩",
-      "description": "호지차 푸딩의 맛을 담아 정성껏 준비한 한 접시예요.",
+      "description": "볶은 찻잎의 구수한 향을 담은 호지차 푸딩이에요.",
       "note": "끝에는 작은 다정함을 남겨둘게요.",
       "form": "pudding"
     },
     "04-mushroom-dashi": {
       "name": "버섯 다시 수프",
-      "description": "버섯 다시 수프의 맛을 담아 정성껏 준비한 한 접시예요.",
+      "description": "버섯을 다시에 끓여 은은한 감칠맛을 낸 수프예요.",
       "note": "작은 한 입부터, 오늘의 속도로.",
       "form": "soup"
     },
     "05-unagi-rice": {
       "name": "장어 솥밥",
-      "description": "장어 솥밥의 맛을 담아 정성껏 준비한 한 접시예요.",
+      "description": "달콤짭짤한 장어를 따뜻한 솥밥 위에 올렸어요.",
       "note": "당신을 위해 준비한 한 접시예요.",
       "form": "unagi"
     },
     "06-sesame-mochi": {
       "name": "흑임자 모찌",
-      "description": "흑임자 모찌의 맛을 담아 정성껏 준비한 한 접시예요.",
+      "description": "말랑한 찹쌀떡에 고소한 흑임자를 담았어요.",
       "note": "끝에는 작은 다정함을 남겨둘게요.",
       "form": "mochi"
     },
     "07-yuzu-radish": {
       "name": "유자 무절임",
-      "description": "유자 무절임의 맛을 담아 정성껏 준비한 한 접시예요.",
+      "description": "아삭한 무에 유자의 향과 새콤한 맛을 더했어요.",
       "note": "작은 한 입부터, 오늘의 속도로.",
       "form": "radish"
     },
     "08-tempura-roll": {
       "name": "새우 텐푸라 롤",
-      "description": "새우 텐푸라 롤의 맛을 담아 정성껏 준비한 한 접시예요.",
+      "description": "바삭한 새우튀김을 밥과 함께 말아낸 롤이에요.",
       "note": "당신을 위해 준비한 한 접시예요.",
       "form": "roll"
     },
     "09-lemon-sorbet": {
       "name": "레몬 소르베",
-      "description": "레몬 소르베의 맛을 담아 정성껏 준비한 한 접시예요.",
+      "description": "레몬의 산뜻한 신맛을 담은 차가운 소르베예요.",
       "note": "끝에는 작은 다정함을 남겨둘게요.",
       "form": "sorbet"
     },
     "10-pumpkin-custard": {
       "name": "단호박 계란찜",
-      "description": "단호박 계란찜의 맛을 담아 정성껏 준비한 한 접시예요.",
+      "description": "단호박의 단맛을 더해 부드럽게 찐 달걀찜이에요.",
       "note": "작은 한 입부터, 오늘의 속도로.",
       "form": "custard"
     },
     "11-salmon-ochazuke": {
       "name": "연어 오차즈케",
-      "description": "연어 오차즈케의 맛을 담아 정성껏 준비한 한 접시예요.",
+      "description": "연어를 얹은 밥에 따뜻한 다시를 부은 오차즈케예요.",
       "note": "당신을 위해 준비한 한 접시예요.",
       "form": "ochazuke"
     },
     "12-strawberry-daifuku": {
       "name": "딸기 다이후쿠",
-      "description": "딸기 다이후쿠의 맛을 담아 정성껏 준비한 한 접시예요.",
+      "description": "말랑한 찹쌀떡 안에 크림과 딸기를 담았어요.",
       "note": "끝에는 작은 다정함을 남겨둘게요.",
       "form": "daifuku"
     },

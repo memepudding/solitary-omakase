@@ -45,3 +45,11 @@ assert.deepEqual(decodeReceipt(encodeReceipt(legacy)),legacy);
 assert.throws(()=>decodeReceipt(encodeReceipt({...legacy,k:['01-chawanmushi','05-unagi-rice','09-lemon-sorbet']})));
 assert.throws(()=>decodeReceipt('invalid'));
 console.log('PASS: 21 courses, 63 assets, Korean and English classification, receipts and legacy QR compatibility.');
+const dialogue=require('../lib/chef-dialogue.json');
+assert.deepEqual(Object.keys(dialogue).sort(),Object.keys(DISHES).sort());
+assert.equal(new Set(Object.values(dialogue).map(d=>d.reasonKo)).size,Object.keys(DISHES).length);
+for(const [kind,d] of Object.entries(dialogue)){
+ assert.ok(d.reasonKo.trim()&&d.reasonEn.trim(),`Missing bilingual chef rationale for ${kind}`);
+ assert.ok(!DISHES[kind].description.includes('맛을 담아 정성껏 준비한'),`Placeholder description: ${kind}`);
+}
+console.log('PASS: every dish has a specific description and bilingual chef rationale.');

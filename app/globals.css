@@ -94,3 +94,19 @@
 .paper-card:not(.receipt-card) .ink-button{background:#a98e69;color:#fffaf1}
 .paper-card:not(.receipt-card) .ink-button:hover:not(:disabled){background:#967a55}
 @media(max-width:600px){.paper-card:not(.receipt-card){width:92vw;border-width:8px}.paper-card:not(.receipt-card)>form{width:76%;max-height:74%;padding:3px 6px}.paper-card:not(.receipt-card) h2{font-size:22px}.paper-card:not(.receipt-card) .mode-selector label{font-size:10px;padding:8px 4px}}
+
+/* Full-screen bite buttons must never show the browser's mobile tap overlay. */
+.eat-target,.eat-target:active,.eat-target:hover:not(:disabled){-webkit-tap-highlight-color:transparent;background:transparent;filter:none;box-shadow:none;transition:none;user-select:none;-webkit-user-select:none}
+.experience :is(button,a,label){-webkit-tap-highlight-color:transparent}
+.experience :is(h1,h2,h3,p,button,label,.world-bubble,.note-meta,.demo-note){word-break:keep-all;overflow-wrap:break-word;text-wrap:pretty}
+.experience :is(h1,h2,h3){text-wrap:balance}
+.chef-aside{font-size:18px;line-height:1.65;text-align:left;width:min(370px,30vw)}
+.chef-aside strong{display:block;font-size:1.05em;margin-bottom:9px;word-break:keep-all;text-wrap:balance}
+.chef-aside p+p{margin-top:9px}
+@media(max-width:600px){
+ .chef-aside{top:88px;right:5%;width:90%;font-size:14px;line-height:1.65;padding:12px 16px}
+ .chef-aside strong{margin-bottom:5px}.chef-aside p+p{margin-top:6px}
+ .chef-aside:after{display:none}
+ .tap-instruction{white-space:normal;text-align:center;width:max-content;max-width:85vw}
+ .tasting-description{line-height:1.75}
+}

@@ -1,0 +1,254 @@
+{
+  "01-chawanmushi": {
+    "reasonKo": "첫 입만큼은 힘들이지 않고 드셨으면 해서 부드럽게 준비했어요.",
+    "reasonEn": "I wanted your first bite to feel effortless."
+  },
+  "02-aburi-salmon": {
+    "reasonKo": "오늘 애쓴 당신께 따뜻한 향이 나는 한 점을 건네고 싶었어요.",
+    "reasonEn": "A warm, savory bite felt right after a long day."
+  },
+  "03-hojicha-pudding": {
+    "reasonKo": "식사 끝에는 진한 단맛보다 구수한 여운을 남기고 싶었어요.",
+    "reasonEn": "I wanted to finish with a gentle toasted aroma."
+  },
+  "04-mushroom-dashi": {
+    "reasonKo": "잠시 숟가락을 들고 천천히 쉬어가시라고 따뜻하게 내왔어요.",
+    "reasonEn": "I served this warm so you could pause between spoonfuls."
+  },
+  "05-unagi-rice": {
+    "reasonKo": "허전한 배부터 든든하게 채워드리고 싶어 밥을 준비했어요.",
+    "reasonEn": "I chose a hearty bowl to leave you comfortably full."
+  },
+  "06-sesame-mochi": {
+    "reasonKo": "마지막 한 입까지 고소한 맛이 곁에 남았으면 했어요.",
+    "reasonEn": "A nutty last bite makes a comforting finish."
+  },
+  "07-yuzu-radish": {
+    "reasonKo": "식사 시작을 조금 산뜻하게 바꿔보고 싶어 골랐어요.",
+    "reasonEn": "I chose a bright, crisp start for this meal."
+  },
+  "08-tempura-roll": {
+    "reasonKo": "바삭한 소리가 오늘의 작은 재미가 되었으면 했어요.",
+    "reasonEn": "I hoped the crunch would bring a little fun to your day."
+  },
+  "09-lemon-sorbet": {
+    "reasonKo": "입안에 상큼한 여운을 남기고 싶어 레몬으로 마무리했어요.",
+    "reasonEn": "Lemon leaves a bright finish after the crisp roll."
+  },
+  "10-pumpkin-custard": {
+    "reasonKo": "위로가 필요한 자리에는 부드럽고 은근한 단맛을 놓고 싶었어요.",
+    "reasonEn": "Gentle sweetness felt right for a comforting meal."
+  },
+  "11-salmon-ochazuke": {
+    "reasonKo": "집에서 먹는 따뜻한 한 그릇처럼 편하게 드셨으면 했어요.",
+    "reasonEn": "I wanted this bowl to feel like a quiet meal at home."
+  },
+  "12-strawberry-daifuku": {
+    "reasonKo": "마지막에는 작지만 반가운 달콤함을 챙겨드리고 싶었어요.",
+    "reasonEn": "I saved a small, sweet surprise for the end."
+  },
+  "13-eggplant": {
+    "reasonKo": "익숙한 장의 구수한 맛으로 포근하게 시작하고 싶었어요.",
+    "reasonEn": "A familiar savory flavor makes a cozy beginning."
+  },
+  "14-crab-rice": {
+    "reasonKo": "숟가락 하나로 편하게 드실 수 있는 한 그릇을 준비했어요.",
+    "reasonEn": "I made a bowl you can enjoy with just a spoon."
+  },
+  "15-chestnut-pudding": {
+    "reasonKo": "밤의 은근한 단맛으로 따뜻한 분위기를 이어가고 싶었어요.",
+    "reasonEn": "Chestnut sweetness keeps the cozy mood going."
+  },
+  "16-cucumber": {
+    "reasonKo": "첫 입은 가볍고 또렷한 맛이면 좋겠다고 생각했어요.",
+    "reasonEn": "I wanted a light, clear flavor for your first bite."
+  },
+  "17-white-sushi": {
+    "reasonKo": "여러 맛을 겹치기보다 생선 본연의 맛을 전하고 싶었어요.",
+    "reasonEn": "I kept it simple so the fish could speak for itself."
+  },
+  "18-pear-jelly": {
+    "reasonKo": "무겁지 않은 단맛으로 편안하게 식사를 끝내고 싶었어요.",
+    "reasonEn": "A light sweetness makes an easy finish."
+  },
+  "19-tofu-mushroom": {
+    "reasonKo": "서두르지 않고 숟가락으로 떠먹는 시간을 드리고 싶었어요.",
+    "reasonEn": "This is a dish to enjoy slowly, one spoonful at a time."
+  },
+  "20-mushroom-rice": {
+    "reasonKo": "뚜껑을 열었을 때의 버섯 향을 한 끼에 담고 싶었어요.",
+    "reasonEn": "I wanted the gentle aroma of mushrooms to fill your meal."
+  },
+  "21-vanilla-mochi": {
+    "reasonKo": "오래 남는 바닐라 향으로 느린 식사의 끝을 채웠어요.",
+    "reasonEn": "Vanilla gives this unhurried meal a lingering finish."
+  },
+  "22-tomato": {
+    "reasonKo": "복잡한 맛 대신 맑은 다시와 토마토의 맛부터 느껴보세요.",
+    "reasonEn": "I kept the flavors clear: tomato and a light dashi."
+  },
+  "23-white-trio": {
+    "reasonKo": "한 점씩 비교하며 지금 먹는 맛에만 집중해보셨으면 했어요.",
+    "reasonEn": "Try each piece slowly and notice how their flavors differ."
+  },
+  "24-yuzu-sorbet": {
+    "reasonKo": "마지막에는 유자 향으로 입안을 산뜻하게 정리하고 싶었어요.",
+    "reasonEn": "Yuzu refreshes the palate after the three nigiri."
+  },
+  "25-tofu-roe": {
+    "reasonKo": "차갑고 새콤한 첫 입으로 잠시 다른 맛을 만나게 하고 싶었어요.",
+    "reasonEn": "A cool, tangy first bite offers a change of pace."
+  },
+  "26-tuna-roll": {
+    "reasonKo": "오늘은 조금 강한 맛도 괜찮을 것 같아 매콤하게 준비했어요.",
+    "reasonEn": "I chose a little heat for a bolder middle course."
+  },
+  "27-citrus-sorbet": {
+    "reasonKo": "매콤한 접시 뒤에는 시원한 감귤 맛을 놓고 싶었어요.",
+    "reasonEn": "Cool citrus is a refreshing follow-up to the spicy roll."
+  },
+  "28-shrimp-custard": {
+    "reasonKo": "오늘의 첫 접시는 부드러운 식감으로 맞이하고 싶었어요.",
+    "reasonEn": "I wanted to welcome you with a soft first course."
+  },
+  "29-scallop-rice": {
+    "reasonKo": "고소한 버터 향과 따뜻한 밥으로 든든함을 드리고 싶었어요.",
+    "reasonEn": "Warm rice and buttery aromas make a satisfying bowl."
+  },
+  "30-caramel-pudding": {
+    "reasonKo": "끝에는 쌉싸름함 뒤에 오는 단맛을 함께 느껴보세요.",
+    "reasonEn": "Notice the sweetness that follows the caramel’s bitter edge."
+  },
+  "31-spinach": {
+    "reasonKo": "새로운 시작은 익숙한 채소 한 입부터여도 좋겠다고 생각했어요.",
+    "reasonEn": "A fresh start can begin with something familiar and simple."
+  },
+  "32-salmon-egg": {
+    "reasonKo": "서로 다른 두 가지 맛을 번갈아 즐기시라고 함께 담았어요.",
+    "reasonEn": "I paired two different flavors for you to enjoy in turn."
+  },
+  "33-sweet-potato": {
+    "reasonKo": "화려하지 않아도 충분히 좋은 단맛을 전하고 싶었어요.",
+    "reasonEn": "A quiet, simple sweetness can be more than enough."
+  },
+  "34-lotus": {
+    "reasonKo": "구멍 난 모양도 바삭한 소리도 재미있는 첫 접시를 골랐어요.",
+    "reasonEn": "The little holes and crisp crunch make a playful start."
+  },
+  "35-shrimp-roll": {
+    "reasonKo": "한 입 안에서 여러 식감이 만나도록 준비했어요.",
+    "reasonEn": "I wanted several textures to meet in one bite."
+  },
+  "36-parfait": {
+    "reasonKo": "한 숟가락마다 다른 층을 발견하는 재미를 드리고 싶었어요.",
+    "reasonEn": "Each spoonful gives you a new layer to discover."
+  },
+  "37-omelette": {
+    "reasonKo": "집중한 날에는 익숙하고 편안한 맛부터 내고 싶었어요.",
+    "reasonEn": "A familiar, comforting flavor suits a focused day."
+  },
+  "38-tuna-sushi": {
+    "reasonKo": "군더더기 없이 참치의 맛을 느끼시라고 간결하게 준비했어요.",
+    "reasonEn": "I kept this simple to let the tuna’s flavor stand out."
+  },
+  "39-matcha-jelly": {
+    "reasonKo": "식사 끝에 말차의 은근한 쌉쌀함을 남겨보고 싶었어요.",
+    "reasonEn": "A gentle matcha bitterness makes a thoughtful finish."
+  },
+  "40-sesame-tofu": {
+    "reasonKo": "조용한 한 끼에 어울리는 순한 맛을 골랐어요.",
+    "reasonEn": "I chose a mild flavor for a quiet meal."
+  },
+  "41-flounder": {
+    "reasonKo": "담백한 한 점을 천천히 음미하는 시간을 드리고 싶었어요.",
+    "reasonEn": "Take your time with this delicate piece of nigiri."
+  },
+  "42-soy-pudding": {
+    "reasonKo": "강한 단맛 대신 두유의 고소함으로 마무리하고 싶었어요.",
+    "reasonEn": "I chose a nutty soy finish rather than a strong sweetness."
+  },
+  "43-greens": {
+    "reasonKo": "느긋한 식사의 시작에 채소의 산뜻함을 더하고 싶었어요.",
+    "reasonEn": "Fresh greens make a gentle start to an unhurried meal."
+  },
+  "44-soba": {
+    "reasonKo": "면과 튀김을 번갈아 먹는 여유를 즐겨보세요.",
+    "reasonEn": "Enjoy taking your time between noodles and crisp tempura."
+  },
+  "45-monaka": {
+    "reasonKo": "바삭한 껍질과 부드러운 팥의 차이를 즐기시라고 준비했어요.",
+    "reasonEn": "I chose this for the contrast of crisp wafers and soft beans."
+  },
+  "46-tartare": {
+    "reasonKo": "작은 재료들이 모여 만드는 다채로운 첫 입을 준비했어요.",
+    "reasonEn": "Little ingredients come together for a lively first bite."
+  },
+  "47-shrimp-sushi": {
+    "reasonKo": "새우가 가진 은근한 단맛을 가까이서 느껴보셨으면 했어요.",
+    "reasonEn": "I wanted you to notice the shrimp’s delicate sweetness."
+  },
+  "48-peach-jelly": {
+    "reasonKo": "설레는 식사의 끝에 복숭아 향을 살짝 남기고 싶었어요.",
+    "reasonEn": "A little peach fragrance suits the end of this joyful meal."
+  },
+  "49-carpaccio": {
+    "reasonKo": "좋은 날의 시작이 꽃 한 접시 같았으면 해서 펼쳐 담았어요.",
+    "reasonEn": "I arranged this like a little plate of flowers for a good day."
+  },
+  "50-sushi-trio": {
+    "reasonKo": "좋아하는 맛을 하나만 고르지 않아도 되도록 세 점을 준비했어요.",
+    "reasonEn": "Three pieces mean you don’t have to choose just one favorite."
+  },
+  "51-cream-mochi": {
+    "reasonKo": "기분 좋은 날에는 크림도 조금 더 포근하게 느껴졌으면 했어요.",
+    "reasonEn": "Soft cream felt like a lovely finish to a happy day."
+  },
+  "52-scallop-custard": {
+    "reasonKo": "스스로를 축하하는 첫 접시라 관자를 넉넉하게 올렸어요.",
+    "reasonEn": "A plump scallop makes a special opening for your celebration."
+  },
+  "53-toro": {
+    "reasonKo": "오늘의 주인공께 풍부한 맛이 나는 한 점을 드리고 싶었어요.",
+    "reasonEn": "I chose a rich piece of tuna for the guest of honor."
+  },
+  "54-montblanc": {
+    "reasonKo": "작은 축하 케이크처럼 느껴지도록 이 디저트를 골랐어요.",
+    "reasonEn": "I chose this dessert to feel like a tiny celebration cake."
+  },
+  "55-peas": {
+    "reasonKo": "익숙한 완두콩에 낯선 알싸함을 조금 더해봤어요.",
+    "reasonEn": "A touch of wasabi adds a small adventure to familiar peas."
+  },
+  "56-wagyu": {
+    "reasonKo": "초밥 위에 구운 고기의 향을 얹어 다른 조합을 준비했어요.",
+    "reasonEn": "Seared beef brings a different kind of aroma to nigiri."
+  },
+  "57-mango-mochi": {
+    "reasonKo": "모험의 끝에는 밝고 익숙한 과일의 단맛을 놓고 싶었어요.",
+    "reasonEn": "I ended this little adventure with bright fruit sweetness."
+  },
+  "58-uni-custard": {
+    "reasonKo": "특별한 식사의 시작을 진한 바다 풍미로 열고 싶었어요.",
+    "reasonEn": "A rich taste of the sea opens this special meal."
+  },
+  "59-premium-sushi": {
+    "reasonKo": "오늘만큼은 여러 바다의 맛을 한 접시에서 만나보세요.",
+    "reasonEn": "This plate lets you explore several flavors of the sea."
+  },
+  "60-fruit-mochi": {
+    "reasonKo": "마지막 한 입도 다채롭게 기억되도록 과일을 모아 담았어요.",
+    "reasonEn": "I gathered different fruits for a colorful final bite."
+  },
+  "61-sleepy-bread": {
+    "reasonKo": "조금 쉬어가시라고 저를 닮아 졸고 있는 빵을 구웠어요.",
+    "reasonEn": "This sleepy little bread is an invitation to take a break."
+  },
+  "62-cheese-gratin": {
+    "reasonKo": "빵 다음에는 따뜻하고 든든한 접시가 어울릴 것 같았어요.",
+    "reasonEn": "A warm, hearty dish felt right after the little bread."
+  },
+  "63-puppy-pancakes": {
+    "reasonKo": "작은 티푸가 식사 끝까지 함께하도록 팬케이크 위에 앉혔어요.",
+    "reasonEn": "I put a little Teepu on top to keep you company to the end."
+  }
+}
