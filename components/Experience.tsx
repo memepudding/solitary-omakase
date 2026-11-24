@@ -29,6 +29,7 @@ export default function Experience(){
  const [saving,setSaving]=useState(false),[notice,setNotice]=useState(''),[sound,setSound]=useState(true),[waiting,setWaiting]=useState(false),[issuedAt,setIssuedAt]=useState('');
  const [menuChoice,setMenuChoice]=useState('auto'),[activeMenu,setActiveMenu]=useState(MENUS[0].id),[guestNear,setGuestNear]=useState(false),[dialogue,setDialogue]=useState(-1);
  const [seatTarget,setSeatTarget]=useState(false);
+ const [reasonFor,setReasonFor]=useState('');
  const [foodReady,setFoodReady]=useState(false);const onDishReady=useCallback(()=>setFoodReady(true),[]);
  const screen=useRef<HTMLElement>(null);const onDishPosition=useCallback((x:number,y:number,top:number)=>{screen.current?.style.setProperty('--dish-x',`${x}px`);screen.current?.style.setProperty('--dish-y',`${y}px`);screen.current?.style.setProperty('--dish-top',`${top}px`);},[]);
  const audio=useRef<AudioContext|null>(null),heading=useRef<HTMLHeadingElement>(null),previousMenu=useRef<string|undefined>(undefined),lastBite=useRef(0);
@@ -39,8 +40,14 @@ export default function Experience(){
  const title=dishName(current.kind,current.name,locale),description=dishDescription(current.kind,FOOD_DETAILS[current.kind].description,locale);
  const rationale=chefDialogue[current.kind as keyof typeof chefDialogue];
  const dishSpeech=stage==='course'||stage==='serving';
+ const speechKey=`${issuedAt}:${course}`;
+ useEffect(()=>{
+  if(!dishSpeech)return;
+  const timer=setTimeout(()=>setReasonFor(speechKey),1500);
+  return()=>clearTimeout(timer);
+ },[dishSpeech,speechKey]);
  const reason=rationale?(locale==='ko'?rationale.reasonKo:rationale.reasonEn):t('천천히 맛보실 수 있도록 준비했어요.','I prepared this for you to enjoy slowly.');
- const chefSpeech=guestNear||inspect?'':stage==='thinking'?'…':dishSpeech?`${description} ${reason}`:stage==='clearing'?t('빈 접시가 제일 반가운 인사네요.','An empty plate is my favorite compliment.'):'';
+ const chefSpeech=guestNear||inspect?'':stage==='thinking'?'…':dishSpeech?(reasonFor===speechKey?reason:description):stage==='clearing'&&course===courses.length-1?t('빈 접시가 제일 반가운 인사네요.','An empty plate is my favorite compliment.'):'';
 
  useEffect(()=>{const canvas=document.createElement('canvas'),gl=canvas.getContext('webgl2');setWebgl(Boolean(gl));gl?.getExtension('WEBGL_lose_context')?.loseContext();const media=matchMedia('(prefers-reduced-motion: reduce)'),update=()=>setReducedMotion(media.matches);update();media.addEventListener('change',update);return()=>{media.removeEventListener('change',update);void audio.current?.close();};},[]);
  useEffect(()=>{if(stage!=='outside')heading.current?.focus({preventScroll:true});},[stage,course]);
@@ -65,7 +72,7 @@ export default function Experience(){
   <div className="scene" role="img" aria-label={t('티푸와 작은 손님이 있는 3D 오마카세 식당','A 3D omakase restaurant with Teepu and a shy guest')}>
    {webgl!==true&&<div className="reference-fallback"/>}
    {webgl===true&&<SceneBoundary onFailure={()=>setWebgl(false)}><Restaurant entered={seated} walking={stage==='walking'} seatTarget={seatTarget} onSeatSelect={()=>setSeatTarget(true)} onSeatNear={()=>{setSeatTarget(false);setStage('seating');}} inspect={inspect} chefMode={chefMode} dish={tasting?current.kind:undefined} tea={stage==='tea'} reducedMotion={reducedMotion} bites={bites} clearing={stage==='clearing'} chefSpeech={chefSpeech} guestNear={guestNear} guestSpeech={dialogue>=0?GUEST_LINES[dialogue][locale==='ko'?0:1]:''} onGuestNear={setGuestNear} onApproach={approach} onDishReady={onDishReady} onDishPosition={onDishPosition}/></SceneBoundary>}
-  </div><div className="scene-shade"/>{chefSpeech&&<aside className="chef-aside world-bubble" aria-live="polite">{dishSpeech?<><strong>{title}</strong><p>{description}</p><p>{reason}</p></>:chefSpeech}</aside>}
+  </div><div className="scene-shade"/>{chefSpeech&&<aside className="chef-aside world-bubble" aria-live="polite">{chefSpeech}</aside>}
   <header className="site-header"><div className="wordmark"><span className="brand-mark" aria-hidden="true">一</span><div>{t('고독한 오마카세','SOLITARY OMAKASE')}<small>OMAKASE FOR ONE</small></div></div><div className="header-actions"><button className="text-button" onClick={()=>setLocale(locale==='ko'?'en':'ko')} aria-label={t('영어로 변경','Switch to Korean')}>{locale==='ko'?'EN':'한국어'}</button><button className="text-button sound-button" aria-pressed={sound} onClick={()=>{if(!sound)play('soft',true);setSound(s=>!s);}}>♪ {sound?t('소리 켜짐','Sound on'):t('소리 꺼짐','Sound off')}</button><span className="open-sign"><i/>{t('한 자리가 준비되어 있어요','A seat is waiting for you')}</span></div></header>
   {tasting&&!guestNear&&!inspect&&<button className="eat-target" onClick={eat} disabled={stage==='clearing'||!foodReady} aria-label={t(`음식 먹기, ${bites}/3 입`,`Take a bite, ${bites} of 3`)}><span className="sr-only">{t('화면을 터치해서 한 입 먹기','Tap the screen to take a bite')}</span></button>}
   {tasting&&!inspect&&!guestNear&&<p className="tap-instruction" aria-live="polite">{stage==='clearing'?t('잘 먹었습니다! 다음 순간을 준비해요.','All finished! A little moment for the next course.'):!foodReady?t('접시를 가져오는 중…','Bringing your plate…'):t('화면을 터치하세요!','Tap the screen!')}</p>}
