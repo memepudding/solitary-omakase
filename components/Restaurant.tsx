@@ -10,12 +10,13 @@ import Arrival from './Arrival';
 import SimmerPot from './SimmerPot';
 import { GUEST_SEAT, type ChefMode } from '@/lib/staging';
 import { KitchenRoutineProps } from './Teepu';
+import CookingPrep from './CookingPrep';
 import ImportedTeepu from './ImportedTeepu';
 import SausageGuest from './SausageGuest';
 import {DISH_ROTATION_SECONDS} from '@/lib/tasting';
 
 type Vec = [number, number, number];
-type SceneProps = { onDishPosition:(x:number,y:number,top:number)=>void; walking:boolean; seatTarget:boolean; onSeatSelect:()=>void; onSeatNear:()=>void; chefMode:ChefMode; entered: boolean; inspect: boolean; dish?: DishKind; tea: boolean; reducedMotion: boolean; bites:number; clearing:boolean; chefSpeech:string; guestNear:boolean; guestSpeech:string; onGuestNear:(near:boolean)=>void; onApproach:()=>void; onDishReady:()=>void };
+type SceneProps = { cookingKind?:DishKind; prepStep:number; onDishPosition:(x:number,y:number,top:number)=>void; walking:boolean; seatTarget:boolean; onSeatSelect:()=>void; onSeatNear:()=>void; chefMode:ChefMode; entered: boolean; inspect: boolean; dish?: DishKind; tea: boolean; reducedMotion: boolean; bites:number; clearing:boolean; chefSpeech:string; guestNear:boolean; guestSpeech:string; onGuestNear:(near:boolean)=>void; onApproach:()=>void; onDishReady:()=>void };
 
 // Keep the guest-facing counter fixed; expand the chef's working aisle behind it.
 const KITCHEN = {
@@ -184,19 +185,19 @@ function ServedDish({kind, reducedMotion,bites,clearing,onReady,onPosition}:{onP
   return <group ref={ref} position={[GUEST_SEAT.x,2.16,.7]} scale={.5}>{isAssetDish(kind)?<AssetFood kind={kind} bites={bites} onReady={onReady}/>:<Food kind={kind}/>}</group>;
 }
 
-function CameraRig({entered,walking,inspect,reducedMotion,guestNear,onGuestNear}:SceneProps) {
+function CameraRig({cookingKind,entered,walking,inspect,reducedMotion,guestNear,onGuestNear}:SceneProps) {
   const {camera,size}=useThree();
   const target=useMemo(()=>new THREE.Vector3(0,1.55,-1.05),[]);
   useFrame((_,delta)=>{
-    if(inspect&&!guestNear){if(camera.position.distanceTo(new THREE.Vector3(4.85,2,-.8))<2.6)onGuestNear(true);return;}
+    if(inspect&&!guestNear&&!cookingKind){if(camera.position.distanceTo(new THREE.Vector3(4.85,2,-.8))<2.6)onGuestNear(true);return;}
     const portrait=size.width/size.height<.85;
-    const destination=walking?new THREE.Vector3(GUEST_SEAT.x,5.6,10.5):guestNear?new THREE.Vector3(3,3.15,2.1):entered?new THREE.Vector3(GUEST_SEAT.x,GUEST_SEAT.eyeY,GUEST_SEAT.z):new THREE.Vector3(portrait?7:8,portrait?7:6.6,portrait?13:10);
-    const look=walking?new THREE.Vector3(GUEST_SEAT.x,1.3,2.5):guestNear?new THREE.Vector3(4.8,2.4,-.8):entered?new THREE.Vector3(GUEST_SEAT.x,2.35,-.25):new THREE.Vector3(0,1.55,-1.05);
+    const destination=cookingKind?new THREE.Vector3(GUEST_SEAT.x,3.7,3.2):walking?new THREE.Vector3(GUEST_SEAT.x,5.6,10.5):guestNear?new THREE.Vector3(3,3.15,2.1):entered?new THREE.Vector3(GUEST_SEAT.x,GUEST_SEAT.eyeY,GUEST_SEAT.z):new THREE.Vector3(portrait?7:8,portrait?7:6.6,portrait?13:10);
+    const look=cookingKind?new THREE.Vector3(GUEST_SEAT.x,2.36,.86):walking?new THREE.Vector3(GUEST_SEAT.x,1.3,2.5):guestNear?new THREE.Vector3(4.8,2.4,-.8):entered?new THREE.Vector3(GUEST_SEAT.x,2.35,-.25):new THREE.Vector3(0,1.55,-1.05);
     const alpha=reducedMotion?1:1-Math.exp(-Math.min(delta,.1)*3);
     camera.position.lerp(destination,alpha);target.lerp(look,alpha);camera.lookAt(target);
-    if(camera instanceof THREE.PerspectiveCamera){camera.fov=THREE.MathUtils.lerp(camera.fov,entered?(portrait?72:61):43,alpha);camera.updateProjectionMatrix();}
+    if(camera instanceof THREE.PerspectiveCamera){camera.fov=THREE.MathUtils.lerp(camera.fov,cookingKind?(portrait?66:46):entered?(portrait?72:61):43,alpha);camera.updateProjectionMatrix();}
   });
-  return <OrbitControls enabled={inspect&&!guestNear} target={entered?[GUEST_SEAT.x,2.35,-.25]:[0,1.55,-1.05]} enablePan={false} minDistance={2.8} maxDistance={14} minPolarAngle={.55} maxPolarAngle={1.45} minAzimuthAngle={-.65} maxAzimuthAngle={1.2} enableDamping/>;
+  return <OrbitControls enabled={inspect&&!guestNear&&!cookingKind} target={entered?[GUEST_SEAT.x,2.35,-.25]:[0,1.55,-1.05]} enablePan={false} minDistance={2.8} maxDistance={14} minPolarAngle={.55} maxPolarAngle={1.45} minAzimuthAngle={-.65} maxAzimuthAngle={1.2} enableDamping/>;
 }
 
 function Room(props:SceneProps) {
@@ -267,11 +268,12 @@ function Room(props:SceneProps) {
     <Cylinder position={[0,4.85,.4]} radius={.015} height={1.5} color="#35251b"/>
     <Cylinder position={[0,4.12,.4]} radius={1.75} height={.2} color="#543b28"/>
     <Cylinder position={[0,4.01,.4]} radius={1.66} height={.015} color="#ffd79c" emissive/>
-    <ImportedTeepu reducedMotion={props.reducedMotion} mode={props.chefMode}/>
+    <group visible={!props.cookingKind}><ImportedTeepu reducedMotion={props.reducedMotion} mode={props.chefMode}/></group>
     <SausageGuest reducedMotion={props.reducedMotion} onApproach={props.onApproach}/>
 
     <Html position={[4.85,3.7,-.8]} center style={{pointerEvents:'none'}}><div className="world-bubble guest-speech" style={{visibility:props.guestSpeech&&props.guestNear?'visible':'hidden'}}>{props.guestSpeech}</div></Html>
     <KitchenRoutineProps reducedMotion={props.reducedMotion} active={props.chefMode==='routine'}/>
+    {props.cookingKind&&<CookingPrep kind={props.cookingKind} step={props.prepStep} reducedMotion={props.reducedMotion} onReady={props.onDishReady}/>}
     {props.dish && <ServedDish key={props.dish} kind={props.dish} reducedMotion={props.reducedMotion} bites={props.bites} clearing={props.clearing} onReady={props.onDishReady} onPosition={props.onDishPosition}/>}
     {props.tea && <group position={[.65,2.045,1.7]}><Cylinder position={[0,.12,0]} radius={.12} height={.23} color="#b8b18b"/><Cylinder position={[0,.239,0]} radius={.1} height={.004} color="#6b713e"/></group>}
     {props.walking&&<Arrival target={props.seatTarget} onNear={props.onSeatNear} onSelect={props.onSeatSelect} reducedMotion={props.reducedMotion}/>}
