@@ -11,3 +11,7 @@
 기존 Three.js / React Three Fiber Canvas 안에서 `components/TeepuModelPreview.tsx`의 `TeepuModel`을 Suspense로 감싸 사용할 수 있습니다. 이 컴포넌트는 원본 모델의 방향을 정면으로 회전시킵니다. 미리보기에서는 Center와 Bounds로 위치 및 크기를 자동 조정합니다.
 
 생성 작업: `70010a18-be6e-48f2-ac18-4ba50e3ee5ee`
+
+## 관절 버전
+
+원본 정적 파일은 보존되어 있습니다. 식당과 미리보기는 현재 `public/characters/teepu-rigged.glb`를 사용합니다. 편집 가능한 Blender 파일 및 두 팔 동작의 범위는 [리깅 문서](teepu-rig.md)를 참고하세요.

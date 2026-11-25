@@ -22,33 +22,6 @@ function Bowl({pot=false}:{pot?:boolean}){
   {pot&&[-1,1].map(side=><mesh key={side} position={[side*.43,.14,0]} rotation={[Math.PI/2,0,0]}><torusGeometry args={[.09,.025,8,20]}/><meshStandardMaterial color="#4c4033"/></mesh>)}
  </group>;
 }
-function Paw({side,action,phase,reducedMotion,torch}:{torch:boolean;side:number;action:PrepAction;phase:React.RefObject<number>;reducedMotion:boolean}){
- const hand=useRef<T.Group>(null);
- useFrame(()=>{
-  if(!hand.current)return;
-  const t=reducedMotion?1.2:phase.current,move=reducedMotion?0:Math.sin(t*7);
-  const mixing=action==='mix'||action==='simmer';
-  hand.current.position.set(side*.52,.37,-.12);
-  hand.current.rotation.set(-.15,side*.15,side*.18);
-  if(side===1){
-   if(action==='slice'){hand.current.position.x=.18+Math.floor(t*2)%4*.06;hand.current.position.y=.34+Math.abs(move)*.13;}
-   if(mixing){hand.current.position.x=.18+Math.cos(t*3)*.09;hand.current.position.z=Math.sin(t*3)*.09;}
-   if(action==='pour'){hand.current.position.set(.3,.58,-.04);hand.current.rotation.z=-.65;}
-   if(action==='garnish'||action==='plate'){hand.current.position.x=.28*(1-Math.min(t/2,1));hand.current.position.y=.7-Math.min(t/2,1)*.25;}
-   if(action==='sear'){hand.current.position.set(.38,.52,move*.1);}
-  }
-  if(action==='shape'||action==='roll'){hand.current.position.x=side*(.28+Math.abs(move)*.045);hand.current.position.z=move*.07;}
- });
- return <group ref={hand}>
-  <mesh position={[side*.07,.17,-.35]} rotation={[-Math.PI/2+.4,0,-side*.15]}><cylinderGeometry args={[.13,.18,.85,20]}/><meshStandardMaterial color="#f5eadc" roughness={.8}/></mesh>
-  <Pebble scale={[.14,.105,.17]} color="#efbd73"/>
-  {[-.07,0,.07].map(x=><Pebble key={x} position={[x,-.02,.115]} scale={[.044,.055,.055]} color="#f5c982"/>)}
-  {side===1&&action==='slice'&&<group position={[-.06,-.08,.16]}><Cuboid size={[.06,.06,.19]} color="#694a31"/><mesh position={[-.1,-.08,.17]}><boxGeometry args={[.012,.15,.34]}/><meshStandardMaterial color="#c9cecb" metalness={.65} roughness={.2}/></mesh></group>}
-  {side===1&&(action==='mix'||action==='simmer'||action==='rice')&&<group position={[-.06,-.13,.07]} rotation={[0,0,.3]}><mesh><cylinderGeometry args={[.018,.018,.44,10]}/><meshStandardMaterial color="#91633c"/></mesh><Pebble position={[0,-.23,0]} scale={[.07,.025,.1]} color="#a37547"/></group>}
-  {side===1&&action==='pour'&&<mesh position={[-.02,-.05,.08]}><cylinderGeometry args={[.08,.07,.17,20]}/><meshStandardMaterial color="#e7dcc9" roughness={.25}/></mesh>}
-  {side===1&&action==='sear'&&torch&&<group position={[-.04,-.08,.09]} rotation={[0,0,.5]}><mesh><cylinderGeometry args={[.04,.04,.22,16]}/><meshStandardMaterial color="#7b7e7c" metalness={.7} roughness={.3}/></mesh><mesh position={[0,-.17,0]}><coneGeometry args={[.045,.18,16]}/><meshBasicMaterial color="#83c7e7" transparent opacity={.65}/></mesh></group>}
- </group>;
-}
 export default function CookingPrep({kind,step,reducedMotion,onReady}:{kind:DishKind;step:number;reducedMotion:boolean;onReady:()=>void}){
  const plan=preparationFor(kind),action=plan[step].action,final=step===plan.length-1;
  const phase=useRef(0),slices=useRef<T.Group>(null),raw=useRef<T.Group>(null),garnish=useRef<T.Group>(null),steam=useRef<T.Group>(null),stream=useRef<T.Mesh>(null);
@@ -66,13 +39,9 @@ export default function CookingPrep({kind,step,reducedMotion,onReady}:{kind:Dish
   if(steam.current)steam.current.children.forEach((o,i)=>{const u=reducedMotion?.4:(phase.current*.45+i*.24)%1;o.position.y=.24+u*.45;o.position.x=Math.sin(i*2+u*2)*.15;o.scale.setScalar(.035+u*.045);(o as T.Mesh<T.SphereGeometry,T.MeshBasicMaterial>).material.opacity=(1-u)*.22;});
  });
  const cooking=action==='simmer'||action==='mix'||action==='rice';
- return <group position={[GUEST_SEAT.x,2.13,.88]}>
-  {/* The unrigged chef uses close-up sleeve and paw props for gentle, bounded gestures. */}
-  <RoundedBox position={[0,.82,-.64]} args={[1.3,1.75,.55]} radius={.18} smoothness={4}><meshStandardMaterial color="#f4e9da" roughness={.8}/></RoundedBox>
-  <group position={[0,.83,-.352]} rotation={[0,0,-.5]}><Cuboid size={[.04,1.25,.015]} color="#dbcebb"/></group>
-  <Cuboid position={[0,.22,-.34]} size={[1.15,.08,.045]} color="#e2d4bf"/>
-  <Cuboid position={[0,-.035,0]} size={[1.85,.065,1.22]} color="#c49663"/>
-  <Paw side={-1} action={action} phase={phase} reducedMotion={reducedMotion} torch={[2,26,56].includes(id)}/><Paw side={1} action={action} phase={phase} reducedMotion={reducedMotion} torch={[2,26,56].includes(id)}/>
+ return <group position={[GUEST_SEAT.x-.23,1.29,-.15]}>
+  <Cuboid position={[0,-.065,0]} size={[1.5,.14,.9]} color="#986b45"/>
+  <Cuboid position={[0,-.55,0]} size={[1.25,.9,.65]} color="#715139"/>
   <group visible={final} position={[0,.025,.08]} scale={.78}>
    {isAssetDish(kind)&&<AssetFood kind={kind} onReady={onReady}/>}
   </group>

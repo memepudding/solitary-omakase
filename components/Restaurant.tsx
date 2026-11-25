@@ -11,6 +11,7 @@ import SimmerPot from './SimmerPot';
 import { GUEST_SEAT, type ChefMode } from '@/lib/staging';
 import { KitchenRoutineProps } from './Teepu';
 import CookingPrep from './CookingPrep';
+import {preparationFor} from '@/lib/preparation';
 import ImportedTeepu from './ImportedTeepu';
 import SausageGuest from './SausageGuest';
 import {DISH_ROTATION_SECONDS} from '@/lib/tasting';
@@ -191,11 +192,11 @@ function CameraRig({cookingKind,entered,walking,inspect,reducedMotion,guestNear,
   useFrame((_,delta)=>{
     if(inspect&&!guestNear&&!cookingKind){if(camera.position.distanceTo(new THREE.Vector3(4.85,2,-.8))<2.6)onGuestNear(true);return;}
     const portrait=size.width/size.height<.85;
-    const destination=cookingKind?new THREE.Vector3(GUEST_SEAT.x,3.7,3.2):walking?new THREE.Vector3(GUEST_SEAT.x,5.6,10.5):guestNear?new THREE.Vector3(3,3.15,2.1):entered?new THREE.Vector3(GUEST_SEAT.x,GUEST_SEAT.eyeY,GUEST_SEAT.z):new THREE.Vector3(portrait?7:8,portrait?7:6.6,portrait?13:10);
-    const look=cookingKind?new THREE.Vector3(GUEST_SEAT.x,2.36,.86):walking?new THREE.Vector3(GUEST_SEAT.x,1.3,2.5):guestNear?new THREE.Vector3(4.8,2.4,-.8):entered?new THREE.Vector3(GUEST_SEAT.x,2.35,-.25):new THREE.Vector3(0,1.55,-1.05);
+    const destination=cookingKind?new THREE.Vector3(GUEST_SEAT.x,2.4,.62):walking?new THREE.Vector3(GUEST_SEAT.x,5.6,10.5):guestNear?new THREE.Vector3(3,3.15,2.1):entered?new THREE.Vector3(GUEST_SEAT.x,GUEST_SEAT.eyeY,GUEST_SEAT.z):new THREE.Vector3(portrait?7:8,portrait?7:6.6,portrait?13:10);
+    const look=cookingKind?new THREE.Vector3(GUEST_SEAT.x-.12,1.45,-.23):walking?new THREE.Vector3(GUEST_SEAT.x,1.3,2.5):guestNear?new THREE.Vector3(4.8,2.4,-.8):entered?new THREE.Vector3(GUEST_SEAT.x,2.35,-.25):new THREE.Vector3(0,1.55,-1.05);
     const alpha=reducedMotion?1:1-Math.exp(-Math.min(delta,.1)*3);
     camera.position.lerp(destination,alpha);target.lerp(look,alpha);camera.lookAt(target);
-    if(camera instanceof THREE.PerspectiveCamera){camera.fov=THREE.MathUtils.lerp(camera.fov,cookingKind?(portrait?66:46):entered?(portrait?72:61):43,alpha);camera.updateProjectionMatrix();}
+    if(camera instanceof THREE.PerspectiveCamera){camera.fov=THREE.MathUtils.lerp(camera.fov,cookingKind?(portrait?82:58):entered?(portrait?72:61):43,alpha);camera.updateProjectionMatrix();}
   });
   return <OrbitControls enabled={inspect&&!guestNear&&!cookingKind} target={entered?[GUEST_SEAT.x,2.35,-.25]:[0,1.55,-1.05]} enablePan={false} minDistance={2.8} maxDistance={14} minPolarAngle={.55} maxPolarAngle={1.45} minAzimuthAngle={-.65} maxAzimuthAngle={1.2} enableDamping/>;
 }
@@ -268,7 +269,7 @@ function Room(props:SceneProps) {
     <Cylinder position={[0,4.85,.4]} radius={.015} height={1.5} color="#35251b"/>
     <Cylinder position={[0,4.12,.4]} radius={1.75} height={.2} color="#543b28"/>
     <Cylinder position={[0,4.01,.4]} radius={1.66} height={.015} color="#ffd79c" emissive/>
-    <group visible={!props.cookingKind}><ImportedTeepu reducedMotion={props.reducedMotion} mode={props.chefMode}/></group>
+    <ImportedTeepu reducedMotion={props.reducedMotion} mode={props.chefMode} cooking={Boolean(props.cookingKind)} stirring={Boolean(props.cookingKind&&['mix','simmer','rice'].includes(preparationFor(props.cookingKind)[props.prepStep].action))}/>
     <SausageGuest reducedMotion={props.reducedMotion} onApproach={props.onApproach}/>
 
     <Html position={[4.85,3.7,-.8]} center style={{pointerEvents:'none'}}><div className="world-bubble guest-speech" style={{visibility:props.guestSpeech&&props.guestNear?'visible':'hidden'}}>{props.guestSpeech}</div></Html>
