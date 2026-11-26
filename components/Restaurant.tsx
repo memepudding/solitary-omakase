@@ -17,7 +17,7 @@ import SausageGuest from './SausageGuest';
 import {DISH_ROTATION_SECONDS} from '@/lib/tasting';
 
 type Vec = [number, number, number];
-type SceneProps = { cookingKind?:DishKind; prepStep:number; onDishPosition:(x:number,y:number,top:number)=>void; walking:boolean; seatTarget:boolean; onSeatSelect:()=>void; onSeatNear:()=>void; chefMode:ChefMode; entered: boolean; inspect: boolean; dish?: DishKind; tea: boolean; reducedMotion: boolean; bites:number; clearing:boolean; chefSpeech:string; guestNear:boolean; guestSpeech:string; onGuestNear:(near:boolean)=>void; onApproach:()=>void; onDishReady:()=>void };
+type SceneProps = { onStool:boolean; cookingKind?:DishKind; prepStep:number; onDishPosition:(x:number,y:number,top:number)=>void; walking:boolean; seatTarget:boolean; onSeatSelect:()=>void; onSeatNear:()=>void; chefMode:ChefMode; entered: boolean; inspect: boolean; dish?: DishKind; tea: boolean; reducedMotion: boolean; bites:number; clearing:boolean; chefSpeech:string; guestNear:boolean; guestSpeech:string; onGuestNear:(near:boolean)=>void; onApproach:()=>void; onDishReady:()=>void };
 
 // Keep the guest-facing counter fixed; expand the chef's working aisle behind it.
 const KITCHEN = {
@@ -269,12 +269,22 @@ function Room(props:SceneProps) {
     <Cylinder position={[0,4.85,.4]} radius={.015} height={1.5} color="#35251b"/>
     <Cylinder position={[0,4.12,.4]} radius={1.75} height={.2} color="#543b28"/>
     <Cylinder position={[0,4.01,.4]} radius={1.66} height={.015} color="#ffd79c" emissive/>
-    {props.cookingKind&&<Block position={[COOK_STATION.chefX,.72,COOK_STATION.chefZ]} size={[.85,.83,.65]} color="#715139" radius={.04} texture={wood}/>}
-    <ImportedTeepu reducedMotion={props.reducedMotion} mode={props.chefMode} cooking={Boolean(props.cookingKind)} stirring={Boolean(props.cookingKind&&['mix','simmer','rice'].includes(preparationFor(props.cookingKind)[props.prepStep].action))}/>
+    <group position={[COOK_STATION.chefX,0,COOK_STATION.chefZ]}>
+      {/* Two permanent wooden treads, aligned with Teepu's foot path. */}
+      <Block position={[0,1.085,0]} size={[.85,.1,.62]} color="#ba8750" radius={.025} texture={wood}/>
+      <Block position={[0,.67,-.4]} size={[.85,.1,.4]} color="#ba8750" radius={.025} texture={wood}/>
+      {[-1,1].map(side=><group key={side}>
+        <Block position={[side*.34,.68,.21]} size={[.08,.72,.08]} color="#715139" texture={wood}/>
+        <Block position={[side*.34,.68,-.22]} size={[.08,.72,.08]} color="#715139" texture={wood}/>
+        <Block position={[side*.34,.49,-.54]} size={[.08,.34,.08]} color="#715139" texture={wood}/>
+        <Block position={[side*.34,.48,-.14]} size={[.07,.08,.85]} color="#715139" texture={wood}/>
+      </group>)}
+    </group>
+    <ImportedTeepu onStool={props.onStool} reducedMotion={props.reducedMotion} mode={props.chefMode} cooking={Boolean(props.cookingKind)} stirring={Boolean(props.cookingKind&&['mix','simmer','rice'].includes(preparationFor(props.cookingKind)[props.prepStep].action))}/>
     <SausageGuest reducedMotion={props.reducedMotion} onApproach={props.onApproach}/>
 
     <Html position={[4.85,3.7,-.8]} center style={{pointerEvents:'none'}}><div className="world-bubble guest-speech" style={{visibility:props.guestSpeech&&props.guestNear?'visible':'hidden'}}>{props.guestSpeech}</div></Html>
-    <KitchenRoutineProps reducedMotion={props.reducedMotion} active={props.chefMode==='routine'}/>
+    <KitchenRoutineProps reducedMotion={props.reducedMotion} active={props.chefMode==='routine'&&!props.onStool}/>
     {props.cookingKind&&<CookingPrep kind={props.cookingKind} step={props.prepStep} reducedMotion={props.reducedMotion} onReady={props.onDishReady}/>}
     {props.dish && <ServedDish key={props.dish} kind={props.dish} reducedMotion={props.reducedMotion} bites={props.bites} clearing={props.clearing} onReady={props.onDishReady} onPosition={props.onDishPosition}/>}
     {props.tea && <group position={[.65,2.045,1.7]}><Cylinder position={[0,.12,0]} radius={.12} height={.23} color="#b8b18b"/><Cylinder position={[0,.239,0]} radius={.1} height={.004} color="#6b713e"/></group>}
