@@ -192,11 +192,11 @@ function CameraRig({cookingKind,entered,walking,inspect,reducedMotion,guestNear,
   useFrame((_,delta)=>{
     if(inspect&&!guestNear&&!cookingKind){if(camera.position.distanceTo(new THREE.Vector3(4.85,2,-.8))<2.6)onGuestNear(true);return;}
     const portrait=size.width/size.height<.85;
-    const destination=cookingKind?new THREE.Vector3(COOK_STATION.x,3.1,2.65):walking?new THREE.Vector3(GUEST_SEAT.x,5.6,10.5):guestNear?new THREE.Vector3(3,3.15,2.1):entered?new THREE.Vector3(GUEST_SEAT.x,GUEST_SEAT.eyeY,GUEST_SEAT.z):new THREE.Vector3(portrait?7:8,portrait?7:6.6,portrait?13:10);
-    const look=cookingKind?new THREE.Vector3(COOK_STATION.x,2.37,COOK_STATION.z):walking?new THREE.Vector3(GUEST_SEAT.x,1.3,2.5):guestNear?new THREE.Vector3(4.8,2.4,-.8):entered?new THREE.Vector3(GUEST_SEAT.x,2.35,-.25):new THREE.Vector3(0,1.55,-1.05);
+    const destination=walking?new THREE.Vector3(GUEST_SEAT.x,5.6,10.5):guestNear?new THREE.Vector3(3,3.15,2.1):entered?new THREE.Vector3(GUEST_SEAT.x,GUEST_SEAT.eyeY,GUEST_SEAT.z):new THREE.Vector3(portrait?7:8,portrait?7:6.6,portrait?13:10);
+    const look=walking?new THREE.Vector3(GUEST_SEAT.x,1.3,2.5):guestNear?new THREE.Vector3(4.8,2.4,-.8):entered?new THREE.Vector3(GUEST_SEAT.x,2.35,-.25):new THREE.Vector3(0,1.55,-1.05);
     const alpha=reducedMotion?1:1-Math.exp(-Math.min(delta,.1)*3);
     camera.position.lerp(destination,alpha);target.lerp(look,alpha);camera.lookAt(target);
-    if(camera instanceof THREE.PerspectiveCamera){camera.fov=THREE.MathUtils.lerp(camera.fov,cookingKind?(portrait?65:48):entered?(portrait?72:61):43,alpha);camera.updateProjectionMatrix();}
+    if(camera instanceof THREE.PerspectiveCamera){camera.fov=THREE.MathUtils.lerp(camera.fov,entered?(portrait?72:61):43,alpha);camera.updateProjectionMatrix();}
   });
   return <OrbitControls enabled={inspect&&!guestNear&&!cookingKind} target={entered?[GUEST_SEAT.x,2.35,-.25]:[0,1.55,-1.05]} enablePan={false} minDistance={2.8} maxDistance={14} minPolarAngle={.55} maxPolarAngle={1.45} minAzimuthAngle={-.65} maxAzimuthAngle={1.2} enableDamping/>;
 }
