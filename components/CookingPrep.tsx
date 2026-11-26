@@ -6,7 +6,7 @@ import * as T from 'three';
 import AssetFood from './AssetFood';
 import {dishModel,isAssetDish,type DishKind} from '@/lib/menu';
 import {preparationFor,PREP_STEP_MS,type PrepAction} from '@/lib/preparation';
-import {GUEST_SEAT} from '@/lib/staging';
+import {COOK_STATION} from '@/lib/staging';
 
 type Vec=[number,number,number];
 function Pebble({position=[0,0,0],scale=[1,1,1],color='#f4e4ba'}:{position?:Vec;scale?:Vec;color?:string}){
@@ -39,9 +39,7 @@ export default function CookingPrep({kind,step,reducedMotion,onReady}:{kind:Dish
   if(steam.current)steam.current.children.forEach((o,i)=>{const u=reducedMotion?.4:(phase.current*.45+i*.24)%1;o.position.y=.24+u*.45;o.position.x=Math.sin(i*2+u*2)*.15;o.scale.setScalar(.035+u*.045);(o as T.Mesh<T.SphereGeometry,T.MeshBasicMaterial>).material.opacity=(1-u)*.22;});
  });
  const cooking=action==='simmer'||action==='mix'||action==='rice';
- return <group position={[GUEST_SEAT.x-.23,1.29,-.15]}>
-  <Cuboid position={[0,-.065,0]} size={[1.5,.14,.9]} color="#986b45"/>
-  <Cuboid position={[0,-.55,0]} size={[1.25,.9,.65]} color="#715139"/>
+ return <group position={[COOK_STATION.x,COOK_STATION.y,COOK_STATION.z]}>
   <group visible={final} position={[0,.025,.08]} scale={.78}>
    {isAssetDish(kind)&&<AssetFood kind={kind} onReady={onReady}/>}
   </group>
