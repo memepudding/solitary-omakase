@@ -56,7 +56,7 @@ export default function TeepuModelPreview() {
       {(['rest','stir','bind'] as const).map(p=><button key={p} aria-pressed={pose===p} onClick={()=>setPose(p)} style={{background:pose===p?'#624936':'#e6d5be',color:pose===p?'#fff6e9':'#624936',borderRadius:30,padding:'14px 24px'}}>{p==='rest'?t('팔 내린 자세','Arms relaxed'):p==='stir'?t('앞발로 젓기','Stir with one paw'):t('원본 자세','Original pose')}</button>)}
       <button onClick={()=>setPaused(!paused)} style={{background:'#e6d5be',color:'#624936',borderRadius:30,padding:'14px 24px'}}>{paused?t('동작 재생','Play motion'):t('동작 멈추기','Pause motion')}</button>
       <button aria-pressed={rotate} onClick={() => setRotate(!rotate)} style={{ background: '#e6d5be', color: '#624936', borderRadius: 30, padding: '14px 24px' }}>{rotate ? t('회전 멈추기','Stop rotation') : t('자동 회전','Auto rotate')}</button>
-      <a href="/characters/teepu-rigged.glb" download style={{ background: '#624936', color: '#fff6e9', borderRadius: 30, padding: '14px 24px', textDecoration: 'none' }}>{t('관절 모델 다운로드','Download rigged model')}</a>
+      <a href="/characters/teepu-polished.glb" download style={{ background: '#624936', color: '#fff6e9', borderRadius: 30, padding: '14px 24px', textDecoration: 'none' }}>{t('관절 모델 다운로드','Download rigged model')}</a>
     </div>
     <p style={{ fontSize: 11, marginTop: 22, opacity: 0.7 }}>{t('원본 표면·텍스처 유지 · 관절 9개 · 팔 내리기와 젓기 동작','Original surface and textures · 9 bones · Relaxed and stirring animations')}</p>
   </main>;

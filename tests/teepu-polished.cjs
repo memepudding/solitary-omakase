@@ -1,0 +1,10 @@
+const assert=require('node:assert/strict'),fs=require('node:fs');
+const read=file=>{const b=fs.readFileSync(file);return JSON.parse(b.subarray(20,20+b.readUInt32LE(12)).toString())};
+const source=read('public/characters/teepu-rigged.glb'),polished=read('public/characters/teepu-polished.glb');
+assert.deepEqual(polished.animations.map(x=>x.name).sort(),source.animations.map(x=>x.name).sort());
+assert.equal(polished.skins[0].joints.length,source.skins[0].joints.length);
+assert.equal(polished.nodes.filter(n=>n.name?.startsWith('EyeCatchlight')).length,2);
+assert(polished.materials.some(m=>Math.abs((m.normalTexture?.scale??1)-.12)<1e-6));
+const a=polished.nodes.filter(n=>n.name?.startsWith('EyeCatchlight'));
+assert(Math.abs(a[0].translation[1]-a[1].translation[1])<.001,'Eye highlights share a natural height');
+console.log('PASS: polished model retains both animation clips and all joints; two aligned catchlights; softened normal map.');

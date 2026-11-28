@@ -6,7 +6,7 @@ import {clone as cloneSkeleton} from 'three/examples/jsm/utils/SkeletonUtils.js'
 import * as T from 'three';
 export type TeepuPose='rest'|'stir'|'bind';
 export default function RiggedTeepu({pose='rest',reducedMotion=false}:{pose?:TeepuPose;reducedMotion?:boolean}){
- const {scene,animations}=useGLTF('/characters/teepu-rigged.glb');
+ const {scene,animations}=useGLTF('/characters/teepu-polished.glb');
  const root=useRef<T.Group>(null),spoon=useRef<T.Group>(null),previous=useRef<T.AnimationAction|null>(null);
  const model=useMemo(()=>{
   const object=cloneSkeleton(scene);object.traverse(o=>{if(o instanceof T.Mesh){o.castShadow=true;o.receiveShadow=true;o.frustumCulled=false;}});
