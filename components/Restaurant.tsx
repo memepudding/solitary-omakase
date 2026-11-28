@@ -14,6 +14,7 @@ import CookingPrep from './CookingPrep';
 import {preparationFor} from '@/lib/preparation';
 import ImportedTeepu from './ImportedTeepu';
 import SausageGuest from './SausageGuest';
+import SpeechText from './SpeechText';
 import {DISH_ROTATION_SECONDS} from '@/lib/tasting';
 
 type Vec = [number, number, number];
@@ -278,7 +279,7 @@ function Room(props:SceneProps) {
     <ImportedTeepu atStation={props.atStation} reducedMotion={props.reducedMotion} mode={props.chefMode} cooking={Boolean(props.cookingKind)} stirring={Boolean(props.cookingKind&&['mix','simmer','rice'].includes(preparationFor(props.cookingKind)[props.prepStep].action))}/>
     <SausageGuest reducedMotion={props.reducedMotion} onApproach={props.onApproach}/>
 
-    <Html position={[4.85,3.7,-.8]} center style={{pointerEvents:'none'}}><div className="world-bubble guest-speech" style={{visibility:props.guestSpeech&&props.guestNear?'visible':'hidden'}}>{props.guestSpeech}</div></Html>
+    <Html position={[4.85,3.7,-.8]} center style={{pointerEvents:'none'}}><div className="world-bubble guest-speech" style={{visibility:props.guestSpeech&&props.guestNear?'visible':'hidden'}}><SpeechText text={props.guestSpeech}/></div></Html>
     <group position={[0,-.815,0]}><KitchenRoutineProps reducedMotion={props.reducedMotion} active={props.chefMode==='routine'&&!props.atStation}/></group>
     {props.cookingKind&&<CookingPrep kind={props.cookingKind} step={props.prepStep} reducedMotion={props.reducedMotion} onReady={props.onDishReady}/>}
     {props.dish && <ServedDish key={props.dish} kind={props.dish} reducedMotion={props.reducedMotion} bites={props.bites} clearing={props.clearing} onReady={props.onDishReady} onPosition={props.onDishPosition}/>}

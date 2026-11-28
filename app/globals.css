@@ -117,3 +117,15 @@
 .experience .paper-card:not(.receipt-card) h2,.experience .guest-dialogue h2,.experience .seat-invitation h2{font-family:'Noto Sans KR',sans-serif;font-weight:900;letter-spacing:-.045em}
 .paper-card .mode-selector label{border-radius:16px}
 .paper-card .ink-button,.paper-card select,.paper-card textarea{border-radius:16px}
+
+/* Dialogue treats complete sentences as separate thought units. */
+.world-bubble .speech-sentence{display:block;word-break:keep-all;overflow-wrap:break-word;text-wrap:pretty}
+.world-bubble .speech-sentence+.speech-sentence{margin-top:.25em}
+.order-place-setting{--plate-size:min(620px,calc(100svh - 150px),78vw);position:relative}
+.order-place-setting .paper-card:not(.receipt-card){width:var(--plate-size);position:relative;isolation:isolate}
+.order-place-setting .paper-card>form{position:relative;z-index:1}
+.puppy-watermark{position:absolute;width:60%;height:60%;left:20%;top:20%;color:#947348;opacity:.065;pointer-events:none;z-index:0}
+.order-cutlery{position:absolute;width:35px;height:min(280px,42vh);top:50%;transform:translateY(-50%);pointer-events:none;filter:drop-shadow(2px 5px 3px #0005)}
+.order-fork{left:calc(50% - var(--plate-size)/2 - 52px)}
+.order-knife{right:calc(50% - var(--plate-size)/2 - 52px)}
+@media(max-width:600px){.order-cutlery{width:21px;height:180px}.order-fork{left:calc(50% - var(--plate-size)/2 - 26px)}.order-knife{right:calc(50% - var(--plate-size)/2 - 26px)}.order-place-setting .paper-card:not(.receipt-card)>form{width:80%}.order-place-setting .paper-card:not(.receipt-card) h2{font-size:20px}}
